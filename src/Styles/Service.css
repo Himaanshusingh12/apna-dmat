@@ -1,0 +1,145 @@
+/*** Section Title ***/
+.section-title::before {
+    position: absolute;
+    content: "";
+    width: 150px;
+    height: 5px;
+    left: 0;
+    bottom: 0;
+    /* background: var(--primary); */
+    background: #00ff82;
+    border-radius: 2px;
+}
+
+.section-title.text-center::before {
+    left: 50%;
+    margin-left: -75px;
+}
+
+.section-title.section-title-sm::before {
+    width: 90px;
+    height: 3px;
+}
+
+.section-title::after {
+    position: absolute;
+    content: "";
+    width: 6px;
+    height: 5px;
+    bottom: 0px;
+    background: #FFFFFF;
+    -webkit-animation: section-title-run 5s infinite linear;
+    animation: section-title-run 5s infinite linear;
+}
+
+.section-title.section-title-sm::after {
+    width: 4px;
+    height: 3px;
+}
+
+.section-title.text-center::after {
+    -webkit-animation: section-title-run-center 5s infinite linear;
+    animation: section-title-run-center 5s infinite linear;
+}
+
+.section-title.section-title-sm::after {
+    -webkit-animation: section-title-run-sm 5s infinite linear;
+    animation: section-title-run-sm 5s infinite linear;
+}
+
+@-webkit-keyframes section-title-run {
+    0% {left: 0; } 50% { left : 145px; } 100% { left: 0; }
+}
+
+@-webkit-keyframes section-title-run-center {
+    0% { left: 50%; margin-left: -75px; } 50% { left : 50%; margin-left: 45px; } 100% { left: 50%; margin-left: -75px; }
+}
+
+@-webkit-keyframes section-title-run-sm {
+    0% {left: 0; } 50% { left : 85px; } 100% { left: 0; }
+}
+
+/*** Service ***/
+.service-item {
+    position: relative;
+    height: 300px;
+    padding: 0 30px;
+    /* transition: .5s; */
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.service-item .service-icon {
+    margin-bottom: 30px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     /* background: var(--primary); */
+     background: #00ff82;
+    border-radius: 2px;
+    transform: rotate(-45deg);
+    transition: background-color 0.5s;
+}
+
+.service-item .service-icon i {
+    transform: rotate(45deg);
+    color: #fff;
+    transition: color 0.5s, transform 0.5s;
+}
+
+.service-item a.btn {
+    position: absolute;
+    width: 60px;
+    bottom: -48px;
+    left: 50%;
+    margin-left: -30px;
+    opacity: 0;
+}
+
+.service-item:hover a.btn {
+    bottom: -24px;
+    opacity: 1;
+}
+
+
+
+/* Hover effect for service card */
+@keyframes rotate-box {
+    from {
+        transform: rotate(-45deg);
+    }
+    to {
+        transform: rotate(315deg); 
+    }
+}
+
+.service-item:hover {
+    background-color: #00ff82 !important;
+    cursor: pointer;
+}
+.item-1:hover {
+    background-color: #00ff82 !important; 
+    color: #fff;
+}
+
+.service-item:hover h4,
+.service-item:hover p {
+    color: #fff; 
+    transition: color 0.5s;
+}
+
+.service-item:hover .service-icon {
+    background-color: #fff; 
+    animation: rotate-box 0.8s ease-in-out forwards;
+}
+
+.service-item:hover .service-icon i {
+    color: #00ff82 !important; 
+}
+
+/* testimonial */
+.testimonial-bg{
+    background-color: #00ff82;
+}
+
