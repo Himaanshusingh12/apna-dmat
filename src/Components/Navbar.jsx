@@ -32,6 +32,65 @@ function Navbar() {
       );
     }
   };
+
+  // for display Active service in the services option
+  const [service, Setservice] = useState([]);
+
+  useEffect(() => {
+    fetchService();
+  }, []);
+
+  const fetchService = async () => {
+    try {
+      const response = await axios.get(
+        `${BACKEND_URL}/api/service/get-active-service`
+      );
+      if (response.status === 200) {
+        Setservice(response.data.data);
+        console.log("The Fetched Service are:", response.data);
+      }
+    } catch (error) {
+      console.error(
+        "Error fetching service:",
+        error.response?.data || error.message
+      );
+      toast.error(
+        `Error fetching service: ${
+          error.response?.data?.message || error.message
+        }`
+      );
+    }
+  };
+
+  // section for fetch active blog category
+  const [blog, Setblog] = useState([]);
+
+  useEffect(() => {
+    fetchActiveblog();
+  }, []);
+
+  const fetchActiveblog = async () => {
+    try {
+      const response = await axios.get(
+        `${BACKEND_URL}/api/blog-category/get-active`
+      );
+      if (response.status === 200) {
+        Setblog(response.data.data);
+        console.log("The fetched Active blog are", response.data);
+      }
+    } catch (error) {
+      console.error(
+        "Error fetching Blog category:",
+        error.response?.data || error.message
+      );
+      toast.error(
+        `Error fetching Blog category: ${
+          error.response?.data?.message || error.message
+        }`
+      );
+    }
+  };
+
   return (
     <>
       {/* Navbar & Carousel Start */}
@@ -71,13 +130,68 @@ function Navbar() {
               <NavLink to="about" className="nav-item nav-link">
                 About
               </NavLink>
-              <NavLink to="/services" className="nav-item nav-link">
+              {/* <NavLink to="/services" className="nav-item nav-link">
                 Services
-              </NavLink>
-              <NavLink to="blog.html" className="nav-item nav-link">
-                Blogs
-              </NavLink>
+              </NavLink> */}
               <div className="nav-item dropdown">
+                <a
+                  href="#"
+                  className="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                >
+                  Services
+                </a>
+                <div className="dropdown-menu m-0">
+                  {service.length > 0 ? (
+                    service.map((service, index) => (
+                      <NavLink
+                        key={service.id}
+                        to={`/sub-service/${service.service_id}`}
+                        className="dropdown-item"
+                      >
+                        {service.title}
+                      </NavLink>
+                    ))
+                  ) : (
+                    <span className="dropdown-item text-muted">
+                      No services available
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              {/* blog section */}
+              <div className="nav-item dropdown">
+                <a
+                  href="#"
+                  className="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                >
+                  Blogs
+                </a>
+                <div className="dropdown-menu m-0">
+                  {blog.length > 0 ? (
+                    blog.map((blog, index) => (
+                      <NavLink
+                        key={blog.id}
+                        to={`/blog-list/${blog.blog_id}`}
+                        className="dropdown-item"
+                      >
+                        {blog.category}
+                      </NavLink>
+                    ))
+                  ) : (
+                    <span className="dropdown-item text-muted">
+                      No Blog available
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              {/* <NavLink to="blog.html" className="nav-item nav-link">
+                Blogs
+              </NavLink> */}
+              {/* <div className="nav-item dropdown">
                 <a href="#" className="nav-link" data-bs-toggle="dropdown">
                   <span className="dropdown-toggle">Products</span>
                 </a>
@@ -95,7 +209,7 @@ function Navbar() {
                     IPOs
                   </NavLink>
                 </div>
-              </div>
+              </div> */}
 
               <NavLink to="/contact" className="nav-item nav-link">
                 Contact Us
@@ -105,7 +219,7 @@ function Navbar() {
               href="#"
               className="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0"
             >
-              Get Appointment
+              Open Dmat Account
             </a>
           </div>
         </nav>

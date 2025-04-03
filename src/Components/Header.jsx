@@ -1,17 +1,81 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "../Styles/Navbar.css";
+import axios from "axios";
+import { BACKEND_URL } from "../Constant";
+import { toast } from "react-toastify";
 
 function Header({ pageTitle, breadcrumb1 }) {
+  const [service, Setservice] = useState([]);
+
+  useEffect(() => {
+    fetchService();
+  }, []);
+
+  const fetchService = async () => {
+    try {
+      const response = await axios.get(
+        `${BACKEND_URL}/api/service/get-active-service`
+      );
+      if (response.status === 200) {
+        Setservice(response.data.data);
+        console.log("The Fetched Service are:", response.data);
+      }
+    } catch (error) {
+      console.error(
+        "Error fetching service:",
+        error.response?.data || error.message
+      );
+      toast.error(
+        `Error fetching service: ${
+          error.response?.data?.message || error.message
+        }`
+      );
+    }
+  };
+
+  // section for fetch Active Blog category
+  const [blog, Setblog] = useState([]);
+
+  useEffect(() => {
+    fetchActiveblog();
+  }, []);
+
+  const fetchActiveblog = async () => {
+    try {
+      const response = await axios.get(
+        `${BACKEND_URL}/api/blog-category/get-active`
+      );
+      if (response.status === 200) {
+        Setblog(response.data.data);
+        console.log("The fetched Active blog are", response.data);
+      }
+    } catch (error) {
+      console.error(
+        "Error fetching Blog category:",
+        error.response?.data || error.message
+      );
+      toast.error(
+        `Error fetching Blog category: ${
+          error.response?.data?.message || error.message
+        }`
+      );
+    }
+  };
   return (
     <>
       {/* Header Start */}
       <div className="container-fluid position-relative p-0">
         <nav className="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-          <a href className="navbar-brand p-0">
+          {/* <a href className="navbar-brand p-0">
             <h1 className="text-primary">
               <i className="fas fa-search-dollar me-3" />
               Stocker
+            </h1>
+          </a> */}
+          <a href className="navbar-brand p-0">
+            <h1 className="text-primary">
+              <img src="img/dmat-logo.png" className="" alt />
             </h1>
           </a>
           <button
@@ -30,35 +94,58 @@ function Header({ pageTitle, breadcrumb1 }) {
               <NavLink to="/about" className="nav-item nav-link">
                 About
               </NavLink>
-              <NavLink to="/services" className="nav-item nav-link">
-                Services
-              </NavLink>
-              <NavLink to="blog.html" className="nav-item nav-link">
-                Blogs
-              </NavLink>
               <div className="nav-item dropdown">
-                <a href="#" className="nav-link" data-bs-toggle="dropdown">
-                  <span className="dropdown-toggle">Pages</span>
+                <a
+                  href="#"
+                  className="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                >
+                  Services
                 </a>
                 <div className="dropdown-menu m-0">
-                  <NavLink to="feature.html" className="dropdown-item">
-                    Our Features
-                  </NavLink>
-                  <NavLink to="team.html" className="dropdown-item">
-                    Our team
-                  </NavLink>
-                  <NavLink to="testimonial.html" className="dropdown-item">
-                    Testimonial
-                  </NavLink>
-                  <NavLink to="offer.html" className="dropdown-item">
-                    Our offer
-                  </NavLink>
-                  <NavLink to="FAQ.html" className="dropdown-item">
-                    FAQs
-                  </NavLink>
-                  <NavLink to="404.html" className="dropdown-item">
-                    404 Page
-                  </NavLink>
+                  {service.length > 0 ? (
+                    service.map((service, index) => (
+                      <NavLink
+                        key={service.id}
+                        to={`/sub-service/${service.service_id}`}
+                        className="dropdown-item"
+                      >
+                        {service.title}
+                      </NavLink>
+                    ))
+                  ) : (
+                    <span className="dropdown-item text-muted">
+                      No services available
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              {/* blog section */}
+              <div className="nav-item dropdown">
+                <a
+                  href="#"
+                  className="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                >
+                  Blogs
+                </a>
+                <div className="dropdown-menu m-0">
+                  {blog.length > 0 ? (
+                    blog.map((blog, index) => (
+                      <NavLink
+                        key={blog.id}
+                        to={`/blog-list/${blog.blog_id}`}
+                        className="dropdown-item"
+                      >
+                        {blog.category}
+                      </NavLink>
+                    ))
+                  ) : (
+                    <span className="dropdown-item text-muted">
+                      No Blog available
+                    </span>
+                  )}
                 </div>
               </div>
               <NavLink to="/contact" className="nav-item nav-link">
@@ -69,7 +156,7 @@ function Header({ pageTitle, breadcrumb1 }) {
               href="#"
               className="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0"
             >
-              Get Appointment
+              Open Dmat Account
             </a>
           </div>
         </nav>

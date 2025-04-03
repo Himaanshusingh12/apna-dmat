@@ -57,9 +57,6 @@ function TopBar() {
           </div>
           <div className="col-lg-4 text-center text-lg-end">
             <div className="d-inline-flex align-items-center icon-height">
-              {/* <a href="#" className="me-3 text-white">
-                <i className="fab fa-facebook-f"></i>
-              </a> */}
               <a
                 href={accountsetting?.[0]?.facebook || "#"}
                 className="me-3 text-white"

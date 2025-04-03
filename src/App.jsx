@@ -6,29 +6,28 @@ import Contact from "./Pages/Contact";
 import Search from "./Pages/Search";
 import EquityTrading from "./Pages/EquityTrading";
 import Fando from "./Pages/Fando";
-import Ipos from "./Pages/Ipos";
 import SipPlans from "./Pages/SipPlans";
-import Swp from "./Pages/Swp";
 import PNF from "./Pages/PNF";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SubService from "./Pages/SubService";
 import ServiceDetails from "./Pages/ServiceDetails";
 import TermsCondition from "./Pages/TermsCondition";
+import BlogList from "./Pages/BlogList";
+import BlogDetail from "./Pages/BlogDetail";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import PopUp from "./Components/PopUp";
+import SipCalculator from "./Pages/SipCalculator";
+import SwpCalculator from "./Pages/SwpCalculator";
+import LumpsumCalculator from "./Pages/LumpsumCalculator";
+import TermplanCalculator from "./Pages/TermplanCalculator";
 
 function App() {
   return (
     <>
-      {/* <Navbar /> */}
-      {/* <About /> */}
-      {/* <TopBar /> */}
-      {/* <Navbar /> */}
-      {/* <Home /> */}
-      {/* <Header /> */}
-      {/* <Navbar /> */}
-
       <BrowserRouter>
         <ToastContainer></ToastContainer>
+        <PopUp />
         <Routes>
           <Route
             path="/"
@@ -38,6 +37,7 @@ function App() {
               </>
             }
           ></Route>
+
           <Route
             path="/about"
             element={
@@ -79,6 +79,30 @@ function App() {
             }
           ></Route>
           <Route
+            path="/privacy-policy"
+            element={
+              <>
+                <PrivacyPolicy />
+              </>
+            }
+          ></Route>
+          <Route
+            path="/blog-list/:blog_id"
+            element={
+              <>
+                <BlogList />
+              </>
+            }
+          />
+          <Route
+            path="/blog-detail/:blogdetail_id"
+            element={
+              <>
+                <BlogDetail />
+              </>
+            }
+          />
+          <Route
             path="/contact"
             element={
               <>
@@ -111,14 +135,6 @@ function App() {
             }
           ></Route>
           <Route
-            path="/ipos"
-            element={
-              <>
-                <Ipos />
-              </>
-            }
-          ></Route>
-          <Route
             path="/sip-plans"
             element={
               <>
@@ -127,10 +143,34 @@ function App() {
             }
           ></Route>
           <Route
-            path="/swp"
+            path="/sip-calculator"
             element={
               <>
-                <Swp />
+                <SipCalculator />
+              </>
+            }
+          ></Route>
+          <Route
+            path="/swp-calculator"
+            element={
+              <>
+                <SwpCalculator />
+              </>
+            }
+          ></Route>
+          <Route
+            path="/lumpsum-calculator"
+            element={
+              <>
+                <LumpsumCalculator />
+              </>
+            }
+          ></Route>
+          <Route
+            path="/termplan-calculator"
+            element={
+              <>
+                <TermplanCalculator />
               </>
             }
           ></Route>

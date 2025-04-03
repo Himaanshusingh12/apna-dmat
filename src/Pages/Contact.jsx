@@ -66,7 +66,7 @@ function Contact() {
         message: "",
       });
     } catch (err) {
-      toast.success("Error sending message");
+      toast.error("Error sending message");
       console.error(err);
     }
   };

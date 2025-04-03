@@ -1,7 +1,36 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { BACKEND_URL } from "../Constant";
 
 function Footer() {
+  const [accountsetting, Setaccountsetting] = useState([]);
+
+  useEffect(() => {
+    fetchAccountsetting();
+  }, []);
+
+  const fetchAccountsetting = async () => {
+    try {
+      const response = await axios.get(
+        `${BACKEND_URL}/api/account-settings/get-setting`
+      );
+      if (response.status === 200) {
+        Setaccountsetting(response.data.data);
+        console.log("The Fetched Testimonial are:", response.data);
+      }
+    } catch (error) {
+      console.error(
+        "Error fetching Account setting:",
+        error.response?.data || error.message
+      );
+      toast.error(
+        `Error fetching account setting: ${
+          error.response?.data?.message || error.message
+        }`
+      );
+    }
+  };
   return (
     <>
       {/* Footer Start */}
@@ -19,47 +48,35 @@ function Footer() {
           <div className="row g-5">
             <div className="col-md-6 col-lg-6 col-xl-4">
               <div className="footer-item">
-                <a href="index.html" className="p-0">
-                  <h4 className="text-white">
-                    <i className="fas fa-search-dollar me-3" />
-                    Stocker
-                  </h4>
-                  {/* <img src="img/logo.png" alt="Logo"> */}
-                </a>
-                <p className="mb-4">
-                  Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem
-                  ipsum dolor sit amet, consectetur adipiscing...
+                <p className="mb-4 text-white">
+                  <span className="font-weight-bold">
+                    Taking care of 3500+ clients
+                  </span>{" "}
+                  <br />
+                  Authorized partner of{" "}
+                  <span className="text-primary font-weight-bold">
+                    Angel One
+                  </span>{" "}
+                  for the last 7 years <br />
+                  <span className="font-weight-bold">
+                    9 years of immense experience
+                  </span>{" "}
+                  with Angel One as both an employee & partner <br />
+                  Elite partnership with{" "}
+                  <span className="text-primary font-weight-bold">
+                    Angel One
+                  </span>{" "}
+                  and AMFI certified MF distributor
                 </p>
-                <div className="d-flex">
-                  <a
-                    href="#"
-                    className="bg-primary d-flex rounded align-items-center py-2 px-3 me-2"
-                  >
-                    <i className="fas fa-apple-alt text-white" />
-                    <div className="ms-3">
-                      <small className="text-white">Download on the</small>
-                      <h6 className="text-white">App Store</h6>
-                    </div>
-                  </a>
-                  <a
-                    href="#"
-                    className="bg-dark d-flex rounded align-items-center py-2 px-3 ms-2"
-                  >
-                    <i className="fas fa-play text-primary" />
-                    <div className="ms-3">
-                      <small className="text-white">Get it on</small>
-                      <h6 className="text-white">Google Play</h6>
-                    </div>
-                  </a>
-                </div>
               </div>
             </div>
+
             <div className="col-md-6 col-lg-6 col-xl-2">
-              <div className="footer-item">
+              <div className="footer-item text-white">
                 <h4 className="text-white mb-4">Quick Links</h4>
-                <a href="#">
+                <NavLink to="/about">
                   <i className="fas fa-angle-right me-2" /> About Us
-                </a>
+                </NavLink>
                 <a href="#">
                   <i className="fas fa-angle-right me-2" /> Feature
                 </a>
@@ -72,17 +89,17 @@ function Footer() {
                 <a href="#">
                   <i className="fas fa-angle-right me-2" /> Blog
                 </a>
-                <a href="#">
+                <NavLink to="/contact">
                   <i className="fas fa-angle-right me-2" /> Contact us
-                </a>
+                </NavLink>
               </div>
             </div>
             <div className="col-md-6 col-lg-6 col-xl-3">
-              <div className="footer-item">
+              <div className="footer-item text-white">
                 <h4 className="text-white mb-4">Support</h4>
-                <a href="#">
+                <NavLink to="privacy-policy">
                   <i className="fas fa-angle-right me-2" /> Privacy Policy
-                </a>
+                </NavLink>
                 <NavLink to="/terms-condition">
                   <i className="fas fa-angle-right me-2" /> Terms &amp;
                   Conditions
@@ -105,45 +122,67 @@ function Footer() {
               <div className="footer-item">
                 <h4 className="text-white mb-4">Contact Info</h4>
                 <div className="d-flex align-items-center">
-                  <i className="fas fa-map-marker-alt text-primary me-3" />
-                  <p className="text-white mb-0">123 Street New York.USA</p>
+                  <p className="text-white small mb-0">
+                    <i className="fas fa-map-marker-alt text-primary me-2"></i>
+                    {accountsetting?.[0]?.address || "No address available"}
+                  </p>
                 </div>
                 <div className="d-flex align-items-center">
-                  <i className="fas fa-envelope text-primary me-3" />
-                  <p className="text-white mb-0">info@example.com</p>
+                  <a
+                    href={`mailto:${accountsetting?.[0]?.email_one}`}
+                    className="text-white small me-0"
+                  >
+                    <i className="fas fa-envelope text-primary me-2" />
+                    {accountsetting?.[0]?.email_one || "No email available"}
+                  </a>
                 </div>
                 <div className="d-flex align-items-center">
-                  <i className="fa fa-phone-alt text-primary me-3" />
-                  <p className="text-white mb-0">(+012) 3456 7890</p>
+                  <p className="text-white small mb-0">
+                    <i className="fa fa-phone-alt text-primary me-3" />
+                    {accountsetting?.[0]?.mobile_number ||
+                      "No mobile number available"}
+                  </p>
                 </div>
-                <div className="d-flex align-items-center mb-4">
-                  <i className="fab fa-firefox-browser text-primary me-3" />
-                  <p className="text-white mb-0">Yoursite@ex.com</p>
-                </div>
-                <div className="d-flex">
+                <div className="d-flex mt-4">
                   <a
-                    className="btn btn-primary btn-sm-square rounded-circle me-3"
-                    href="#"
+                    href={accountsetting?.[0]?.facebook || "#"}
+                    className="btn btn-primary btn-sm-square rounded-circle me-2"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <i className="fab fa-facebook-f text-white" />
+                    <i className="fab fa-facebook-f text-white"></i>
                   </a>
                   <a
-                    className="btn btn-primary btn-sm-square rounded-circle me-3"
-                    href="#"
+                    href={accountsetting?.[0]?.twitter || "#"}
+                    className="btn btn-primary btn-sm-square rounded-circle me-2"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <i className="fab fa-twitter text-white" />
+                    <i className="fab fa-twitter text-white"></i>
                   </a>
                   <a
-                    className="btn btn-primary btn-sm-square rounded-circle me-3"
-                    href="#"
+                    href={accountsetting?.[0]?.instagram || "#"}
+                    className="btn btn-primary btn-sm-square rounded-circle me-2"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <i className="fab fa-instagram text-white" />
+                    <i className="fab fa-instagram text-white"></i>
                   </a>
                   <a
-                    className="btn btn-primary btn-sm-square rounded-circle me-0"
-                    href="#"
+                    href={accountsetting?.[0]?.linkedin || "#"}
+                    className="btn btn-primary btn-sm-square rounded-circle me-2"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <i className="fab fa-linkedin-in text-white" />
+                    <i className="fab fa-linkedin-in text-white"></i>
+                  </a>
+                  <a
+                    href={accountsetting?.[0]?.youtube || "#"}
+                    className="btn btn-primary btn-sm-square rounded-circle me-2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="fab fa-youtube text-white"></i>
                   </a>
                 </div>
               </div>
@@ -161,21 +200,18 @@ function Footer() {
               <span className="text-body">
                 <a href="#" className="border-bottom text-white">
                   <i className="fas fa-copyright text-light me-2" />
-                  Your Site Name
+                  Apna Dmat
                 </a>
                 , All right reserved.
               </span>
             </div>
             <div className="col-md-6 text-center text-md-end text-body">
-              {/*/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. *** /*/}
-              {/*/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, *** /*/}
-              {/*/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". *** /*/}
-              Designed By{" "}
+              Designed By
               <a
                 className="border-bottom text-white"
-                href="https://htmlcodex.com"
+                href="https://codeinweb.com/"
               >
-                HTML Codex
+                Codeinweb
               </a>
             </div>
           </div>

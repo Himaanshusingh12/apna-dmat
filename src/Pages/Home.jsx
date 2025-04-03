@@ -9,6 +9,7 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 import axios from "axios";
 import { BACKEND_URL } from "../Constant";
 import { NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Home() {
   const [service, Setservice] = useState([]);
@@ -40,7 +41,6 @@ function Home() {
   };
 
   // for testimonial
-
   const options = {
     loop: true,
     margin: 20,
@@ -82,6 +82,32 @@ function Home() {
       );
     }
   };
+
+  //section for fetch Active slider
+  const [slider, Setslider] = useState([]);
+  useEffect(() => {
+    fetchSlider();
+  }, []);
+
+  const fetchSlider = async () => {
+    try {
+      const response = await axios.get(`${BACKEND_URL}/api/slider/get-active`);
+      if (response.status === 200) {
+        Setslider(response.data.data);
+        console.log("The Fetched Slider are:", response.data);
+      }
+    } catch (error) {
+      console.error(
+        "Error fetching slider:",
+        error.response?.data || error.message
+      );
+      toast.error(
+        `Error fetching slider: ${
+          error.response?.data?.message || error.message
+        }`
+      );
+    }
+  };
   return (
     <>
       <TopBar />
@@ -98,70 +124,67 @@ function Home() {
           smartSpeed={1000}
         >
           {/* Slide 1 */}
-          <div className="header-carousel-item">
-            <img
-              src="img/carousel-1.jpg"
-              className="img-fluid w-100"
-              alt="Slide 1"
-            />
-            <div className="carousel-caption">
-              <div className="container">
-                <div className="row gy-0 gx-5">
-                  <div className="col-lg-0 col-xl-5"></div>
-                  <div className="col-xl-7 animated fadeInLeft">
-                    <div className="text-sm-center text-md-end">
-                      <h4 className="text-primary text-uppercase fw-bold mb-4">
-                        Welcome To Stocker
-                      </h4>
-                      <h1 className="display-4 text-uppercase text-white mb-4">
-                        Invest your money with higher return
-                      </h1>
-                      <p className="mb-5 fs-5">
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy...
-                      </p>
-                      <div className="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
-                        <a
-                          className="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2"
-                          href="#"
-                        >
-                          <i className="fa fa-play-circle me-2" /> Watch Video
-                        </a>
-                        <a
-                          className="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2"
-                          href="#"
-                        >
-                          Learn More
-                        </a>
-                      </div>
-                      <div className="d-flex align-items-center justify-content-center justify-content-md-end">
-                        <h2 className="text-white me-2">Follow Us:</h2>
-                        <div className="d-flex justify-content-end ms-2">
+          {slider.map((slider, index) => (
+            <div key={index} className="header-carousel-item">
+              <img
+                src={slider.image}
+                className="img-fluid w-100"
+                alt={`Slide ${index + 1}`}
+              />
+              <div className="carousel-caption">
+                <div className="container">
+                  <div className="row g-5">
+                    <div className="col-12 animated fadeInLeft">
+                      <div className="text-center">
+                        <h4 className="text-primary text-uppercase fw-bold mb-4">
+                          Welcome To Apna Dmat
+                        </h4>
+                        <h2 className="display-4 text-uppercase text-white mb-4">
+                          Maximize Your Wealth Through Smart Investments
+                        </h2>
+                        <p className="mb-5 fs-5">
+                          Join thousands of investors who are leveraging the
+                          power of the stock market to grow their wealth. With
+                          expert insights, real-time data, and personalized
+                          strategies, we help you make informed investment
+                          decisions.
+                        </p>
+                        <div className="d-flex justify-content-center flex-shrink-0 mb-4">
                           <a
-                            className="btn btn-md-square btn-light rounded-circle me-2"
+                            className="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2"
                             href="#"
                           >
-                            <i className="fab fa-facebook-f" />
+                            Learn More About Our Services
                           </a>
-                          <a
-                            className="btn btn-md-square btn-light rounded-circle mx-2"
-                            href="#"
-                          >
-                            <i className="fab fa-twitter" />
-                          </a>
-                          <a
-                            className="btn btn-md-square btn-light rounded-circle mx-2"
-                            href="#"
-                          >
-                            <i className="fab fa-instagram" />
-                          </a>
-                          <a
-                            className="btn btn-md-square btn-light rounded-circle ms-2"
-                            href="#"
-                          >
-                            <i className="fab fa-linkedin-in" />
-                          </a>
+                        </div>
+                        <div className="d-flex align-items-center justify-content-center">
+                          <h2 className="text-white me-2">Follow Us:</h2>
+                          <div className="d-flex justify-content-end ms-2">
+                            <a
+                              className="btn btn-md-square btn-light rounded-circle me-2"
+                              href="#"
+                            >
+                              <i className="fab fa-facebook-f" />
+                            </a>
+                            <a
+                              className="btn btn-md-square btn-light rounded-circle mx-2"
+                              href="#"
+                            >
+                              <i className="fab fa-twitter" />
+                            </a>
+                            <a
+                              className="btn btn-md-square btn-light rounded-circle mx-2"
+                              href="#"
+                            >
+                              <i className="fab fa-instagram" />
+                            </a>
+                            <a
+                              className="btn btn-md-square btn-light rounded-circle ms-2"
+                              href="#"
+                            >
+                              <i className="fab fa-linkedin-in" />
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -169,72 +192,77 @@ function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          ))}
 
           {/* Slide 2 */}
-          <div className="header-carousel-item">
-            <img
-              src="img/carousel-2.jpg"
-              className="img-fluid w-100"
-              alt="Slide 2"
-            />
-            <div className="carousel-caption">
-              <div className="container">
-                <div className="row g-5">
-                  <div className="col-12 animated fadeInUp">
-                    <div className="text-center">
-                      <h4 className="text-primary text-uppercase fw-bold mb-4">
-                        Welcome To Stocker
-                      </h4>
-                      <h1 className="display-4 text-uppercase text-white mb-4">
-                        Invest your money with higher return
-                      </h1>
-                      <p className="mb-5 fs-5">
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy...
-                      </p>
-                      <div className="d-flex justify-content-center flex-shrink-0 mb-4">
-                        <a
-                          className="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2"
-                          href="#"
-                        >
-                          <i className="fa fa-play-circle me-2" /> Watch Video
-                        </a>
-                        <a
-                          className="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2"
-                          href="#"
-                        >
-                          Learn More
-                        </a>
-                      </div>
-                      <div className="d-flex align-items-center justify-content-center">
-                        <h2 className="text-white me-2">Follow Us:</h2>
-                        <div className="d-flex justify-content-end ms-2">
+          {slider.map((slider, index) => (
+            <div key={`image2-${index}`} className="header-carousel-item">
+              <img
+                src={slider.image2}
+                className="img-fluid w-100"
+                alt={`Slide ${index + 1}`}
+              />
+              <div className="carousel-caption">
+                <div className="container">
+                  <div className="row g-5">
+                    <div className="col-12 animated fadeInUp">
+                      <div className="text-center">
+                        <h4 className="text-primary text-uppercase fw-bold mb-4">
+                          Welcome To Apna Dmat
+                        </h4>
+                        <h1 className="display-4 text-uppercase text-white mb-4">
+                          Invest your money with higher return
+                        </h1>
+                        <p className="mb-5 fs-5">
+                          With over 16 years of experience in the stock market,
+                          we take care of 3500+ clients and manage over ₹30
+                          Crores in Assets Under Management (AUM). As an
+                          authorized partner of Angel One for the last 7 years,
+                          we are committed to providing you with expert guidance
+                          and support.
+                        </p>
+                        <div className="d-flex justify-content-center flex-shrink-0 mb-4">
                           <a
-                            className="btn btn-md-square btn-light rounded-circle me-2"
+                            className="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2"
                             href="#"
                           >
-                            <i className="fab fa-facebook-f" />
+                            <i className="fa fa-play-circle me-2" /> Watch Video
                           </a>
                           <a
-                            className="btn btn-md-square btn-light rounded-circle mx-2"
+                            className="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2"
                             href="#"
                           >
-                            <i className="fab fa-twitter" />
+                            Learn More
                           </a>
-                          <a
-                            className="btn btn-md-square btn-light rounded-circle mx-2"
-                            href="#"
-                          >
-                            <i className="fab fa-instagram" />
-                          </a>
-                          <a
-                            className="btn btn-md-square btn-light rounded-circle ms-2"
-                            href="#"
-                          >
-                            <i className="fab fa-linkedin-in" />
-                          </a>
+                        </div>
+                        <div className="d-flex align-items-center justify-content-center">
+                          <h2 className="text-white me-2">Follow Us:</h2>
+                          <div className="d-flex justify-content-end ms-2">
+                            <a
+                              className="btn btn-md-square btn-light rounded-circle me-2"
+                              href="#"
+                            >
+                              <i className="fab fa-facebook-f" />
+                            </a>
+                            <a
+                              className="btn btn-md-square btn-light rounded-circle mx-2"
+                              href="#"
+                            >
+                              <i className="fab fa-twitter" />
+                            </a>
+                            <a
+                              className="btn btn-md-square btn-light rounded-circle mx-2"
+                              href="#"
+                            >
+                              <i className="fab fa-instagram" />
+                            </a>
+                            <a
+                              className="btn btn-md-square btn-light rounded-circle ms-2"
+                              href="#"
+                            >
+                              <i className="fab fa-linkedin-in" />
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -242,121 +270,8 @@ function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          ))}
         </OwlCarousel>
-      </div>
-
-      {/* about section  */}
-      <div className="container-fluid about py-5">
-        <div className="container py-5">
-          <div className="row g-5 align-items-center">
-            <div className="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
-              <div>
-                <h4 className="text-primary">About Us</h4>
-                <h1 className="display-5 mb-4">
-                  Meet our company unless miss the opportunity
-                </h1>
-                <p className="mb-4">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum
-                  velit temporibus repudiandae ipsa, eaque perspiciatis cumque
-                  incidunt tenetur sequi reiciendis.
-                </p>
-                <div className="row g-4">
-                  <div className="col-md-6 col-lg-6 col-xl-6">
-                    <div className="d-flex">
-                      <div>
-                        <i className="fas fa-lightbulb fa-3x text-primary" />
-                      </div>
-                      <div className="ms-4">
-                        <h4>Business Consuluting</h4>
-                        <p>
-                          Lorem ipsum dolor sit amet consectetur, adipisicing
-                          elit.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6 col-lg-6 col-xl-6">
-                    <div className="d-flex">
-                      <div>
-                        <i className="bi bi-bookmark-heart-fill fa-3x text-primary" />
-                      </div>
-                      <div className="ms-4">
-                        <h4>Year Of Expertise</h4>
-                        <p>
-                          Lorem ipsum dolor sit amet consectetur, adipisicing
-                          elit.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-sm-6">
-                    <a
-                      href="#"
-                      className="btn btn-primary rounded-pill py-3 px-5 flex-shrink-0"
-                    >
-                      Discover Now
-                    </a>
-                  </div>
-                  <div className="col-sm-6">
-                    <div className="d-flex">
-                      <i className="fas fa-phone-alt fa-2x text-primary me-4" />
-                      <div>
-                        <h4>Call Us</h4>
-                        <p className="mb-0 fs-5" style={{ letterSpacing: 1 }}>
-                          +01234567890
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-5 wow fadeInRight" data-wow-delay="0.2s">
-              <div className="bg-primary rounded position-relative overflow-hidden">
-                <img
-                  src="img/about-2.png"
-                  className="img-fluid rounded w-100"
-                  alt
-                />
-                <div
-                  className
-                  style={{ position: "absolute", top: "-15px", right: "-15px" }}
-                >
-                  <img
-                    src="img/about-3.png"
-                    className="img-fluid"
-                    style={{ width: 150, height: 150, opacity: "0.7" }}
-                    alt
-                  />
-                </div>
-                <div
-                  className
-                  style={{
-                    position: "absolute",
-                    top: "-20px",
-                    left: 10,
-                    transform: "rotate(90deg)",
-                  }}
-                >
-                  <img
-                    src="img/about-4.png"
-                    className="img-fluid"
-                    style={{ width: 100, height: 150, opacity: "0.9" }}
-                    alt
-                  />
-                </div>
-                <div className="rounded-bottom">
-                  <img
-                    src="img/about-5.jpg"
-                    className="img-fluid rounded-bottom w-100"
-                    alt
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* service section */}
@@ -379,7 +294,6 @@ function Home() {
                   key={service.id}
                 >
                   <NavLink
-                    // to={`/subservice/${service.service_id}`}
                     to={`/sub-service/${service.service_id}`}
                     className="text-decoration-none"
                     style={{ color: "inherit" }}
@@ -401,8 +315,186 @@ function Home() {
         </div>
       </div>
 
+      {/* about section  */}
+      <div className="container-fluid about py-5">
+        <div className="container py-5">
+          <div className="row g-5 align-items-center">
+            <div className="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
+              <div>
+                <h4 className="text-primary">About Us</h4>
+                <h1 className="display-5 mb-4">
+                  Meet our company unless miss the opportunity
+                </h1>
+                <p className="mb-4">
+                  We are a dynamic team with over 16 years of expertise in the
+                  stock market, providing top-tier consultancy services and
+                  managing significant AUM for our clients.
+                </p>
+                <div className="row g-4">
+                  <div className="col-md-6 col-lg-6 col-xl-6">
+                    <div className="d-flex">
+                      <div>
+                        <i className="fas fa-lightbulb fa-3x text-primary" />
+                      </div>
+                      <div className="ms-4">
+                        <h4>Business Consulting</h4>
+                        <p>
+                          We offer professional business consulting services to
+                          help you make informed decisions.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-6 col-lg-6 col-xl-6">
+                    <div className="d-flex">
+                      <div>
+                        <i className="bi bi-bookmark-heart-fill fa-3x text-primary" />
+                      </div>
+                      <div className="ms-4">
+                        <h4>Year Of Expertise</h4>
+                        <p>
+                          With over 16 years of hands-on experience, we provide
+                          insights into the stock market and other financial
+                          strategies.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-sm-6">
+                    <NavLink
+                      to="/about"
+                      className="btn btn-primary rounded-pill py-3 px-5 flex-shrink-0"
+                    >
+                      Discover Now
+                    </NavLink>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-xl-5 wow fadeInRight" data-wow-delay="0.2s">
+              <div className="bg-primary rounded position-relative overflow-hidden">
+                <img
+                  src="img/about-2.png"
+                  className="img-fluid rounded w-100"
+                  alt="About Us"
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "-15px",
+                    right: "-15px",
+                  }}
+                >
+                  <img
+                    src="img/about-3.png"
+                    className="img-fluid"
+                    style={{ width: 150, height: 150, opacity: "0.7" }}
+                    alt="About Image 3"
+                  />
+                </div>
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "-20px",
+                    left: 10,
+                    transform: "rotate(90deg)",
+                  }}
+                >
+                  <img
+                    src="img/about-4.png"
+                    className="img-fluid"
+                    style={{ width: 100, height: 150, opacity: "0.9" }}
+                    alt="About Image 4"
+                  />
+                </div>
+                <div className="rounded-bottom">
+                  <img
+                    src="img/about-5.jpg"
+                    className="img-fluid rounded-bottom w-100"
+                    alt="About Image 5"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Additional Details Section */}
+          <div className="row mt-5">
+            <div className="col-12">
+              <h2 className="text-center text-primary mb-4">
+                Our Expertise & Achievements
+              </h2>
+              <div className="row">
+                <div className="col-md-4">
+                  <div className="d-flex align-items-center mb-4">
+                    <i className="fas fa-users fa-2x text-primary me-3" />
+                    <p className="mb-0">
+                      <strong>3500+ Clients</strong> - We take care of over 3500
+                      clients across different sectors.
+                    </p>
+                  </div>
+                </div>
+                <div className="col-md-4">
+                  <div className="d-flex align-items-center mb-4">
+                    <i className="fas fa-chart-line fa-2x text-primary me-3" />
+                    <p className="mb-0">
+                      <strong>30cr+ AUM</strong> - Our assets under management
+                      exceed 30 crores, showcasing our financial expertise.
+                    </p>
+                  </div>
+                </div>
+                <div className="col-md-4">
+                  <div className="d-flex align-items-center mb-4">
+                    <i className="fas fa-cogs fa-2x text-primary me-3" />
+                    <p className="mb-0">
+                      <strong>16 Years of Stock Market Experience</strong> - Our
+                      team has been deeply involved in the stock market for over
+                      16 years.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-4">
+                  <div className="d-flex align-items-center mb-4">
+                    <i className="fas fa-handshake fa-2x text-primary me-3" />
+                    <p className="mb-0">
+                      <strong>
+                        7 Years as Authorized Partner of Angel One
+                      </strong>{" "}
+                      - We've built a strong partnership with Angel One for over
+                      7 years.
+                    </p>
+                  </div>
+                </div>
+                <div className="col-md-4">
+                  <div className="d-flex align-items-center mb-4">
+                    <i className="fas fa-briefcase fa-2x text-primary me-3" />
+                    <p className="mb-0">
+                      <strong>9 Years of Experience with Angel One</strong> - We
+                      have an extensive 9-year experience with Angel One, both
+                      as an employee and partner.
+                    </p>
+                  </div>
+                </div>
+                <div className="col-md-4">
+                  <div className="d-flex align-items-center mb-4">
+                    <i className="fas fa-certificate fa-2x text-primary me-3" />
+                    <p className="mb-0">
+                      <strong>AMFI Certified MF Distributor</strong> - We are
+                      certified by AMFI, ensuring our reliability as a mutual
+                      fund distributor.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Testimonial Start */}
-      <div className="container-fluid testimonial pb-5 mt-5">
+      <div className="container-fluid testimonial pb-5">
         <div className="container pb-5">
           <div
             className="text-center mx-auto pb-5 wow fadeInUp"
@@ -444,189 +536,6 @@ function Home() {
           </OwlCarousel>
         </div>
       </div>
-
-      {/* Team Start */}
-      <div className="container-fluid team pb-5 mt-5">
-        <div className="container pb-5">
-          <div
-            className="text-center mx-auto pb-5 wow fadeInUp"
-            data-wow-delay="0.2s"
-            style={{ maxWidth: 800 }}
-          >
-            <h4 className="text-primary">Our Team</h4>
-            <h1 className="display-5 mb-4">Meet Our Advisers</h1>
-            <p className="mb-0">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur
-              adipisci facilis cupiditate recusandae aperiam temporibus corporis
-              itaque quis facere, numquam, ad culpa deserunt sint dolorem autem
-              obcaecati, ipsam mollitia hic.
-            </p>
-          </div>
-          <div className="row g-4">
-            <div
-              className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp"
-              data-wow-delay="0.2s"
-            >
-              <div className="team-item">
-                <div className="team-img">
-                  <img src="img/team-1.jpg" className="img-fluid" alt />
-                </div>
-                <div className="team-title">
-                  <h4 className="mb-0">David James</h4>
-                  <p className="mb-0">Profession</p>
-                </div>
-                <div className="team-icon">
-                  <a
-                    className="btn btn-primary btn-sm-square rounded-circle me-3"
-                    href
-                  >
-                    <i className="fab fa-facebook-f" />
-                  </a>
-                  <a
-                    className="btn btn-primary btn-sm-square rounded-circle me-3"
-                    href
-                  >
-                    <i className="fab fa-twitter" />
-                  </a>
-                  <a
-                    className="btn btn-primary btn-sm-square rounded-circle me-3"
-                    href
-                  >
-                    <i className="fab fa-linkedin-in" />
-                  </a>
-                  <a
-                    className="btn btn-primary btn-sm-square rounded-circle me-0"
-                    href
-                  >
-                    <i className="fab fa-instagram" />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp"
-              data-wow-delay="0.4s"
-            >
-              <div className="team-item">
-                <div className="team-img">
-                  <img src="img/team-2.jpg" className="img-fluid" alt />
-                </div>
-                <div className="team-title">
-                  <h4 className="mb-0">David James</h4>
-                  <p className="mb-0">Profession</p>
-                </div>
-                <div className="team-icon">
-                  <a
-                    className="btn btn-primary btn-sm-square rounded-circle me-3"
-                    href
-                  >
-                    <i className="fab fa-facebook-f" />
-                  </a>
-                  <a
-                    className="btn btn-primary btn-sm-square rounded-circle me-3"
-                    href
-                  >
-                    <i className="fab fa-twitter" />
-                  </a>
-                  <a
-                    className="btn btn-primary btn-sm-square rounded-circle me-3"
-                    href
-                  >
-                    <i className="fab fa-linkedin-in" />
-                  </a>
-                  <a
-                    className="btn btn-primary btn-sm-square rounded-circle me-0"
-                    href
-                  >
-                    <i className="fab fa-instagram" />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp"
-              data-wow-delay="0.6s"
-            >
-              <div className="team-item">
-                <div className="team-img">
-                  <img src="img/team-3.jpg" className="img-fluid" alt />
-                </div>
-                <div className="team-title">
-                  <h4 className="mb-0">David James</h4>
-                  <p className="mb-0">Profession</p>
-                </div>
-                <div className="team-icon">
-                  <a
-                    className="btn btn-primary btn-sm-square rounded-circle me-3"
-                    href
-                  >
-                    <i className="fab fa-facebook-f" />
-                  </a>
-                  <a
-                    className="btn btn-primary btn-sm-square rounded-circle me-3"
-                    href
-                  >
-                    <i className="fab fa-twitter" />
-                  </a>
-                  <a
-                    className="btn btn-primary btn-sm-square rounded-circle me-3"
-                    href
-                  >
-                    <i className="fab fa-linkedin-in" />
-                  </a>
-                  <a
-                    className="btn btn-primary btn-sm-square rounded-circle me-0"
-                    href
-                  >
-                    <i className="fab fa-instagram" />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp"
-              data-wow-delay="0.8s"
-            >
-              <div className="team-item">
-                <div className="team-img">
-                  <img src="img/team-4.jpg" className="img-fluid" alt />
-                </div>
-                <div className="team-title">
-                  <h4 className="mb-0">David James</h4>
-                  <p className="mb-0">Profession</p>
-                </div>
-                <div className="team-icon">
-                  <a
-                    className="btn btn-primary btn-sm-square rounded-circle me-3"
-                    href
-                  >
-                    <i className="fab fa-facebook-f" />
-                  </a>
-                  <a
-                    className="btn btn-primary btn-sm-square rounded-circle me-3"
-                    href
-                  >
-                    <i className="fab fa-twitter" />
-                  </a>
-                  <a
-                    className="btn btn-primary btn-sm-square rounded-circle me-3"
-                    href
-                  >
-                    <i className="fab fa-linkedin-in" />
-                  </a>
-                  <a
-                    className="btn btn-primary btn-sm-square rounded-circle me-0"
-                    href
-                  >
-                    <i className="fab fa-instagram" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* Team End */}
 
       <Footer />
     </>
