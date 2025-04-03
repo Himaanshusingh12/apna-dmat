@@ -31,11 +31,11 @@ function PopUp() {
     console.log("Popup closed, setting 'popupShown' to true");
   };
 
-  // Reset the popup to show again
-  const resetPopup = () => {
-    localStorage.removeItem("popupShown");
-    setShowPopup(false);
-  };
+  // // Reset the popup to show again
+  // const resetPopup = () => {
+  //   localStorage.removeItem("popupShown");
+  //   setShowPopup(false);
+  // };
 
   // section for add data by user
   const [formData, SetFormdata] = useState({
@@ -199,7 +199,7 @@ function PopUp() {
       </div>
 
       {/* Reset Button for testing */}
-      <button onClick={resetPopup}>Reset Popup</button>
+      {/* <button onClick={resetPopup}>Reset Popup</button> */}
     </>
   );
 }
