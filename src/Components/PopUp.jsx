@@ -7,35 +7,21 @@ function PopUp() {
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
-    // Check if popup has been shown before
-    const isPopupShown = localStorage.getItem("popupShown");
+    // Show the popup every time the user visits the website after 5 seconds
+    const timer = setTimeout(() => {
+      setShowPopup(true);
+      const modal = new window.bootstrap.Modal(
+        document.getElementById("popupModal")
+      );
+      modal.show();
+    }, 5000);
 
-    // If not shown before, trigger the popup after 5 seconds
-    if (!isPopupShown) {
-      const timer = setTimeout(() => {
-        setShowPopup(true);
-        const modal = new window.bootstrap.Modal(
-          document.getElementById("popupModal")
-        );
-        modal.show();
-      }, 5000);
-
-      // Cleanup the timer when the component is unmounted
-      return () => clearTimeout(timer);
-    }
+    return () => clearTimeout(timer);
   }, []);
 
   const closePopup = () => {
     setShowPopup(false);
-    localStorage.setItem("popupShown", "true");
-    console.log("Popup closed, setting 'popupShown' to true");
   };
-
-  // // Reset the popup to show again
-  // const resetPopup = () => {
-  //   localStorage.removeItem("popupShown");
-  //   setShowPopup(false);
-  // };
 
   // section for add data by user
   const [formData, SetFormdata] = useState({
