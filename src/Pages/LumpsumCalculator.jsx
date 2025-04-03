@@ -3,7 +3,7 @@ import TopBar from "../Components/TopBar";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import Chart from "react-google-charts";
-import "../Styles/SipCalculator.css";
+import "../Styles/Sipcalculator.css";
 
 function LumpsumCalculator() {
   const [lumpsumAmount, setLumpsumAmount] = useState(100000);

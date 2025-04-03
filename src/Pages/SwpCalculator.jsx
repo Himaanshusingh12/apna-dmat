@@ -2,7 +2,7 @@ import React from "react";
 import TopBar from "../Components/TopBar";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import "../Styles/SipCalculator.css";
+import "../Styles/Sipcalculator.css";
 import { useState } from "react";
 
 function SwpCalculator() {
