@@ -108,6 +108,35 @@ function Home() {
       );
     }
   };
+
+  //Accounting setting for fetch social media icons link
+  const [accountsetting, Setaccountsetting] = useState([]);
+
+  useEffect(() => {
+    fetchAccountsetting();
+  }, []);
+
+  const fetchAccountsetting = async () => {
+    try {
+      const response = await axios.get(
+        `${BACKEND_URL}/api/account-settings/get-setting`
+      );
+      if (response.status === 200) {
+        Setaccountsetting(response.data.data);
+        console.log("The Fetched Accounting setting are:", response.data);
+      }
+    } catch (error) {
+      console.error(
+        "Error fetching Account setting:",
+        error.response?.data || error.message
+      );
+      toast.error(
+        `Error fetching account setting: ${
+          error.response?.data?.message || error.message
+        }`
+      );
+    }
+  };
   return (
     <>
       <TopBar />
@@ -162,25 +191,33 @@ function Home() {
                           <div className="d-flex justify-content-end ms-2">
                             <a
                               className="btn btn-md-square btn-light rounded-circle me-2"
-                              href="#"
+                              href={accountsetting?.[0]?.facebook || "#"}
+                              target="_blank"
+                              rel="noopener noreferrer"
                             >
                               <i className="fab fa-facebook-f" />
                             </a>
                             <a
                               className="btn btn-md-square btn-light rounded-circle mx-2"
-                              href="#"
+                              href={accountsetting?.[0]?.twitter || "#"}
+                              target="_blank"
+                              rel="noopener noreferrer"
                             >
                               <i className="fab fa-twitter" />
                             </a>
                             <a
                               className="btn btn-md-square btn-light rounded-circle mx-2"
-                              href="#"
+                              href={accountsetting?.[0]?.instagram || "#"}
+                              target="_blank"
+                              rel="noopener noreferrer"
                             >
                               <i className="fab fa-instagram" />
                             </a>
                             <a
                               className="btn btn-md-square btn-light rounded-circle ms-2"
-                              href="#"
+                              href={accountsetting?.[0]?.linkedin || "#"}
+                              target="_blank"
+                              rel="noopener noreferrer"
                             >
                               <i className="fab fa-linkedin-in" />
                             </a>
@@ -223,12 +260,6 @@ function Home() {
                         </p>
                         <div className="d-flex justify-content-center flex-shrink-0 mb-4">
                           <a
-                            className="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2"
-                            href="#"
-                          >
-                            <i className="fa fa-play-circle me-2" /> Watch Video
-                          </a>
-                          <a
                             className="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2"
                             href="#"
                           >
@@ -240,25 +271,33 @@ function Home() {
                           <div className="d-flex justify-content-end ms-2">
                             <a
                               className="btn btn-md-square btn-light rounded-circle me-2"
-                              href="#"
+                              href={accountsetting?.[0]?.facebook || "#"}
+                              target="_blank"
+                              rel="noopener noreferrer"
                             >
                               <i className="fab fa-facebook-f" />
                             </a>
                             <a
                               className="btn btn-md-square btn-light rounded-circle mx-2"
-                              href="#"
+                              href={accountsetting?.[0]?.twitter || "#"}
+                              target="_blank"
+                              rel="noopener noreferrer"
                             >
                               <i className="fab fa-twitter" />
                             </a>
                             <a
                               className="btn btn-md-square btn-light rounded-circle mx-2"
-                              href="#"
+                              href={accountsetting?.[0]?.instagram || "#"}
+                              target="_blank"
+                              rel="noopener noreferrer"
                             >
                               <i className="fab fa-instagram" />
                             </a>
                             <a
                               className="btn btn-md-square btn-light rounded-circle ms-2"
-                              href="#"
+                              href={accountsetting?.[0]?.linkedin || "#"}
+                              target="_blank"
+                              rel="noopener noreferrer"
                             >
                               <i className="fab fa-linkedin-in" />
                             </a>
