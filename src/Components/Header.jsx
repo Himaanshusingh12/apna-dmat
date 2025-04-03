@@ -6,6 +6,36 @@ import { BACKEND_URL } from "../Constant";
 import { toast } from "react-toastify";
 
 function Header({ pageTitle, breadcrumb1 }) {
+  // section for fetch logo
+  const [accountsetting, Setaccountsetting] = useState([]);
+
+  useEffect(() => {
+    fetchAccountsetting();
+  }, []);
+
+  const fetchAccountsetting = async () => {
+    try {
+      const response = await axios.get(
+        `${BACKEND_URL}/api/account-settings/get-setting`
+      );
+      if (response.status === 200) {
+        Setaccountsetting(response.data.data);
+        console.log("The Fetched Accounting setting are:", response.data);
+      }
+    } catch (error) {
+      console.error(
+        "Error fetching Account setting:",
+        error.response?.data || error.message
+      );
+      toast.error(
+        `Error fetching account setting: ${
+          error.response?.data?.message || error.message
+        }`
+      );
+    }
+  };
+
+  //section for fetch active service
   const [service, Setservice] = useState([]);
 
   useEffect(() => {
@@ -67,15 +97,9 @@ function Header({ pageTitle, breadcrumb1 }) {
       {/* Header Start */}
       <div className="container-fluid position-relative p-0">
         <nav className="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-          {/* <a href className="navbar-brand p-0">
-            <h1 className="text-primary">
-              <i className="fas fa-search-dollar me-3" />
-              Stocker
-            </h1>
-          </a> */}
           <a href className="navbar-brand p-0">
             <h1 className="text-primary">
-              <img src="img/dmat-logo.png" className="" alt />
+              <img src={accountsetting[0]?.logo} className="" alt />
             </h1>
           </a>
           <button

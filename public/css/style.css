@@ -136,7 +136,8 @@
 .sticky-top.navbar-light .navbar-nav .nav-link,
 .sticky-top.navbar-light .navbar-nav .nav-item .nav-link {
     padding: 20px 0;
-    color: var(--bs-dark);
+    /* color: var(--bs-dark); */
+    color: var(--bs-white);
 }
 
 .navbar-light .navbar-nav .nav-item .nav-link {
@@ -151,9 +152,16 @@
 }
 
 /* navbar logo image */
+.navbar-light .navbar-brand {
+    display: flex;
+    align-items: center; 
+    height: 70px; 
+}
+
 .navbar-light .navbar-brand img {
-    max-height: 60px;
-    transition: .5s;
+    max-height: 130px;
+    width: auto;
+    margin-top: 20px;
 }
 
 .sticky-top.navbar-light .navbar-brand img {
@@ -239,7 +247,8 @@
     
     .sticky-top.navbar-light {
         position: fixed;
-        background: var(--bs-light);
+        /* background: var(--bs-light); */
+        background: rgba(0, 0, 0, 0.8);
     }
 
     .navbar-light .navbar-nav .nav-link::before {

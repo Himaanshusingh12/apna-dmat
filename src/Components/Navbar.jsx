@@ -18,7 +18,7 @@ function Navbar() {
       );
       if (response.status === 200) {
         Setaccountsetting(response.data.data);
-        console.log("The Fetched Testimonial are:", response.data);
+        console.log("The Fetched Accounting setting are:", response.data);
       }
     } catch (error) {
       console.error(
@@ -98,22 +98,13 @@ function Navbar() {
         <nav className="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
           <a href className="navbar-brand p-0">
             <h1 className="text-primary">
-              <img src="img/dmat-logo.png" className="" alt />
-            </h1>
-          </a>
-          {/* <a href="#" className="navbar-brand p-0">
-            <h1 className="text-primary">
               <img
-                src={
-                  accountsetting?.[0]?.logo
-                    ? `${BACKEND_URL}${accountsetting[0].logo}`
-                    : "img/dmat-logo.png"
-                }
-                alt="Logo"
+                src={accountsetting[0]?.logo}
                 className=""
+                alt="Website Logo"
               />
             </h1>
-          </a> */}
+          </a>
           <button
             className="navbar-toggler"
             type="button"
@@ -130,9 +121,6 @@ function Navbar() {
               <NavLink to="about" className="nav-item nav-link">
                 About
               </NavLink>
-              {/* <NavLink to="/services" className="nav-item nav-link">
-                Services
-              </NavLink> */}
               <div className="nav-item dropdown">
                 <a
                   href="#"
@@ -187,30 +175,6 @@ function Navbar() {
                   )}
                 </div>
               </div>
-
-              {/* <NavLink to="blog.html" className="nav-item nav-link">
-                Blogs
-              </NavLink> */}
-              {/* <div className="nav-item dropdown">
-                <a href="#" className="nav-link" data-bs-toggle="dropdown">
-                  <span className="dropdown-toggle">Products</span>
-                </a>
-                <div className="dropdown-menu m-0">
-                  <NavLink to="feature.html" className="dropdown-item">
-                    stock broking
-                  </NavLink>
-                  <NavLink to="team.html" className="dropdown-item">
-                    Equity
-                  </NavLink>
-                  <NavLink to="testimonial.html" className="dropdown-item">
-                    F&O
-                  </NavLink>
-                  <NavLink to="offer.html" className="dropdown-item">
-                    IPOs
-                  </NavLink>
-                </div>
-              </div> */}
-
               <NavLink to="/contact" className="nav-item nav-link">
                 Contact Us
               </NavLink>
