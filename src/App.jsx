@@ -54,7 +54,6 @@ function App() {
             }
           ></Route>
           <Route
-            // path="/service-detail/:subservice_slug"
             // path="/service/:service_slug/:subservice_slug"
             path="/:service_slug/:subservice_slug"
             element={
