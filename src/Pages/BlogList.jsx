@@ -7,20 +7,21 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 
 function BlogList() {
-  const { blog_id } = useParams();
+  const { slug } = useParams();
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchBloglist();
-  }, [blog_id]);
+  }, [slug]);
 
   const fetchBloglist = async () => {
     try {
       const response = await axios.get(
-        `${BACKEND_URL}/api/blog-category/category/${blog_id}`
+        `${BACKEND_URL}/api/blog-category/category/${slug}`
       );
       if (response.status === 200) {
+        console.log("Response Data: ", response.data);
         setList(response.data.data);
         console.log("The fetched Blog list:", response.data);
       }
@@ -30,11 +31,11 @@ function BlogList() {
       setLoading(false);
     }
   };
-
+  console.log("slug", slug);
   return (
     <>
       <TopBar />
-      <Header pageTitle="Blog List" breadcrumb1="Blog List" />
+      <Header pageTitle="Blogs" breadcrumb1="Blog List" />
       <div className="container mt-4">
         <h2 className="mb-4 text-center">Latest Blogs</h2>
         {loading ? (
@@ -58,7 +59,7 @@ function BlogList() {
                         : blog.description}
                     </p>
                     <Link
-                      to={`/blog-detail/${blog.blogdetail_id}`}
+                      to={`/blog-detail/${blog.slug}`}
                       className="btn btn-primary"
                     >
                       Read More

@@ -48,6 +48,7 @@ function Footer() {
           <div className="row g-5">
             <div className="col-md-6 col-lg-6 col-xl-4">
               <div className="footer-item">
+                <h4 className="text-white mb-4">Apna Dmat</h4>
                 <p className="mb-4 text-white">
                   <span className="font-weight-bold">
                     Taking care of 3500+ clients
@@ -206,7 +207,7 @@ function Footer() {
               </span>
             </div>
             <div className="col-md-6 text-center text-md-end text-body">
-              Designed By
+              Designed By&nbsp;
               <a
                 className="border-bottom text-white"
                 href="https://codeinweb.com/"

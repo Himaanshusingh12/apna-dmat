@@ -165,7 +165,7 @@
 }
 
 .sticky-top.navbar-light .navbar-brand img {
-    max-height: 45px;
+    max-height:100px
 }
 
 .navbar .dropdown-toggle::after {

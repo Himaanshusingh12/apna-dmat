@@ -94,7 +94,7 @@ function PopUp() {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="popupModalLabel">
-                Enter Details
+                Enter Details for Services
               </h5>
               <button
                 type="button"

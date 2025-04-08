@@ -8,18 +8,18 @@ import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 
 function SubService() {
-  const { service_id } = useParams();
+  const { slug } = useParams();
   const [subservices, setSubservices] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchSubServices();
-  }, [service_id]);
+  }, [slug]);
 
   const fetchSubServices = async () => {
     try {
       const response = await axios.get(
-        `${BACKEND_URL}/api/subservice/subservices/${service_id}`
+        `${BACKEND_URL}/api/subservice/subservices/${slug}`
       );
       if (response.status === 200) {
         setSubservices(response.data.data);
@@ -35,7 +35,7 @@ function SubService() {
   return (
     <>
       <TopBar />
-      <Header pageTitle="Sub Services" breadcrumb1="Sub Services" />
+      <Header pageTitle="Services" breadcrumb1="Sub Services" />
       <div className="container-fluid wow fadeInUp" data-wow-delay="0.1s">
         <div className="container py-5">
           <div
@@ -53,7 +53,9 @@ function SubService() {
                   key={subservice.subservice_id}
                 >
                   <NavLink
-                    to={`/service-detail/${subservice.subservice_id}`} // Pass subservice_id in URL
+                    // to={`/service-detail/${subservice.slug}`}
+                    // to={`/service/${slug}/${subservice.slug}`}
+                    to={`/${slug}/${subservice.slug}`}
                     className="text-decoration-none"
                     style={{ color: "inherit" }}
                   >

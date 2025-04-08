@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import About from "./Pages/About";
 import Home from "./Pages/Home";
-import Services from "./Pages/Services";
 import Contact from "./Pages/Contact";
 import Search from "./Pages/Search";
 import EquityTrading from "./Pages/EquityTrading";
@@ -47,15 +46,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="/services"
-            element={
-              <>
-                <Services />
-              </>
-            }
-          ></Route>
-          <Route
-            path="/sub-service/:service_id"
+            path="/service/:slug"
             element={
               <>
                 <SubService />
@@ -63,7 +54,9 @@ function App() {
             }
           ></Route>
           <Route
-            path="/service-detail/:subservice_id"
+            // path="/service-detail/:subservice_slug"
+            // path="/service/:service_slug/:subservice_slug"
+            path="/:service_slug/:subservice_slug"
             element={
               <>
                 <ServiceDetails />
@@ -87,7 +80,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="/blog-list/:blog_id"
+            path="/blog-list/:slug"
             element={
               <>
                 <BlogList />
@@ -95,7 +88,7 @@ function App() {
             }
           />
           <Route
-            path="/blog-detail/:blogdetail_id"
+            path="/blog-detail/:slug"
             element={
               <>
                 <BlogDetail />

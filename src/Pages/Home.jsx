@@ -137,6 +137,9 @@ function Home() {
       );
     }
   };
+
+  // for slider issue
+
   return (
     <>
       <TopBar />
@@ -163,7 +166,8 @@ function Home() {
               <div className="carousel-caption">
                 <div className="container">
                   <div className="row g-5">
-                    <div className="col-12 animated fadeInLeft">
+                    {/* <div className="col-12 animated fadeInLeft"> */}
+                    <div className="col-12 owl-animated owl-fadeInLeft">
                       <div className="text-center">
                         <h4 className="text-primary text-uppercase fw-bold mb-4">
                           Welcome To Apna Dmat
@@ -333,7 +337,8 @@ function Home() {
                   key={service.id}
                 >
                   <NavLink
-                    to={`/sub-service/${service.service_id}`}
+                    // to={`/sub-service/${service.service_id}`}
+                    to={`/service/${service.slug}`}
                     className="text-decoration-none"
                     style={{ color: "inherit" }}
                   >
@@ -355,7 +360,7 @@ function Home() {
       </div>
 
       {/* about section  */}
-      <div className="container-fluid about py-5">
+      <div className="container-fluid about py-1">
         <div className="container py-5">
           <div className="row g-5 align-items-center">
             <div className="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
@@ -417,7 +422,7 @@ function Home() {
                   className="img-fluid rounded w-100"
                   alt="About Us"
                 />
-                <div
+                {/* <div
                   style={{
                     position: "absolute",
                     top: "-15px",
@@ -430,8 +435,8 @@ function Home() {
                     style={{ width: 150, height: 150, opacity: "0.7" }}
                     alt="About Image 3"
                   />
-                </div>
-                <div
+                </div> */}
+                {/* <div
                   style={{
                     position: "absolute",
                     top: "-20px",
@@ -445,7 +450,7 @@ function Home() {
                     style={{ width: 100, height: 150, opacity: "0.9" }}
                     alt="About Image 4"
                   />
-                </div>
+                </div> */}
                 <div className="rounded-bottom">
                   <img
                     src="img/about-5.jpg"
@@ -456,76 +461,74 @@ function Home() {
               </div>
             </div>
           </div>
+          {/* Additional feature section */}
+        </div>
+      </div>
 
-          {/* Additional Details Section */}
-          <div className="row mt-5">
-            <div className="col-12">
-              <h2 className="text-center text-primary mb-4">
-                Our Expertise & Achievements
-              </h2>
-              <div className="row">
-                <div className="col-md-4">
-                  <div className="d-flex align-items-center mb-4">
-                    <i className="fas fa-users fa-2x text-primary me-3" />
-                    <p className="mb-0">
-                      <strong>3500+ Clients</strong> - We take care of over 3500
-                      clients across different sectors.
-                    </p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="d-flex align-items-center mb-4">
-                    <i className="fas fa-chart-line fa-2x text-primary me-3" />
-                    <p className="mb-0">
-                      <strong>30cr+ AUM</strong> - Our assets under management
-                      exceed 30 crores, showcasing our financial expertise.
-                    </p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="d-flex align-items-center mb-4">
-                    <i className="fas fa-cogs fa-2x text-primary me-3" />
-                    <p className="mb-0">
-                      <strong>16 Years of Stock Market Experience</strong> - Our
-                      team has been deeply involved in the stock market for over
-                      16 years.
-                    </p>
-                  </div>
-                </div>
+      {/* Additional Details Section */}
+      <div className="container-fluid py-5 bg-primary text-white mt-5">
+        <div className="container">
+          <h2 className="text-center text-white mb-4 fw-bold">
+            Our Expertise & Achievements
+          </h2>
+          <div className="row g-4">
+            <div className="col-md-4">
+              <div className="d-flex align-items-center p-3 bg-white shadow rounded text-primary">
+                <i className="fas fa-users fa-2x me-3" />
+                <p className="mb-0">
+                  <strong>3500+ Clients</strong> - We take care of over 3500
+                  clients across different sectors.
+                </p>
               </div>
-              <div className="row">
-                <div className="col-md-4">
-                  <div className="d-flex align-items-center mb-4">
-                    <i className="fas fa-handshake fa-2x text-primary me-3" />
-                    <p className="mb-0">
-                      <strong>
-                        7 Years as Authorized Partner of Angel One
-                      </strong>{" "}
-                      - We've built a strong partnership with Angel One for over
-                      7 years.
-                    </p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="d-flex align-items-center mb-4">
-                    <i className="fas fa-briefcase fa-2x text-primary me-3" />
-                    <p className="mb-0">
-                      <strong>9 Years of Experience with Angel One</strong> - We
-                      have an extensive 9-year experience with Angel One, both
-                      as an employee and partner.
-                    </p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="d-flex align-items-center mb-4">
-                    <i className="fas fa-certificate fa-2x text-primary me-3" />
-                    <p className="mb-0">
-                      <strong>AMFI Certified MF Distributor</strong> - We are
-                      certified by AMFI, ensuring our reliability as a mutual
-                      fund distributor.
-                    </p>
-                  </div>
-                </div>
+            </div>
+            <div className="col-md-4">
+              <div className="d-flex align-items-center p-3 bg-white shadow rounded text-primary">
+                <i className="fas fa-chart-line fa-2x me-3" />
+                <p className="mb-0">
+                  <strong>30cr+ AUM</strong> - Our assets under management
+                  exceed 30 crores, showcasing our financial expertise.
+                </p>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="d-flex align-items-center p-3 bg-white shadow rounded text-primary">
+                <i className="fas fa-cogs fa-2x me-3" />
+                <p className="mb-0">
+                  <strong>16 Years of Stock Market</strong> - Our team has been
+                  deeply involved in the stock market for over 16 years.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="row g-4 mt-3">
+            <div className="col-md-4">
+              <div className="d-flex align-items-center p-3 bg-white shadow rounded text-primary">
+                <i className="fas fa-handshake fa-2x me-3" />
+                <p className="mb-0">
+                  <strong>7 Years as Authorized Partner of Angel One</strong> -
+                  We've built a strong partnership with Angel One for over 7
+                  years.
+                </p>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="d-flex align-items-center p-3 bg-white shadow rounded text-primary">
+                <i className="fas fa-briefcase fa-2x me-3" />
+                <p className="mb-0">
+                  <strong>9 Years of Experience with Angel One</strong> - We
+                  have an extensive 9-year experience with Angel One, both as an
+                  employee and partner.
+                </p>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="d-flex align-items-center p-3 bg-white shadow rounded text-primary">
+                <i className="fas fa-certificate fa-2x me-3" />
+                <p className="mb-0">
+                  <strong>AMFI Certified MF Distributor</strong> - We are
+                  certified by AMFI, ensuring our reliability as a mutual fund
+                  distributor.
+                </p>
               </div>
             </div>
           </div>
@@ -533,7 +536,7 @@ function Home() {
       </div>
 
       {/* Testimonial Start */}
-      <div className="container-fluid testimonial pb-5">
+      <div className="container-fluid testimonial py-5 mt-4">
         <div className="container pb-5">
           <div
             className="text-center mx-auto pb-5 wow fadeInUp"

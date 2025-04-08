@@ -7,18 +7,19 @@ import axios from "axios";
 import { BACKEND_URL } from "../Constant";
 
 function BlogDetail() {
-  const { blogdetail_id } = useParams();
+  // const { blogdetail_id } = useParams();
+  const { slug } = useParams();
   const [detail, setdetail] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchBlogDetails();
-  }, [blogdetail_id]);
+  }, [slug]);
 
   const fetchBlogDetails = async () => {
     try {
       const response = await axios.get(
-        `${BACKEND_URL}/api/blog-detail/details/${blogdetail_id}`
+        `${BACKEND_URL}/api/blog-detail/details/${slug}`
       );
       if (response.status === 200) {
         setdetail(response.data.data);
@@ -34,29 +35,6 @@ function BlogDetail() {
     <>
       <TopBar />
       <Header pageTitle="Blog Detail" breadcrumb1="Blog Detail" />
-      {/* <div className="container mt-4">
-        {loading ? (
-          <p>Loading...</p>
-        ) : detail ? (
-          <div>
-            <h2>{detail.title}</h2>
-            <img src={detail.image} alt={detail.title} className="img-fluid" />
-            <p>{detail.description}</p>
-            <h4>Meta Information:</h4>
-            <p>
-              <strong>Meta Title:</strong> {detail.meta_title}
-            </p>
-            <p>
-              <strong>Meta Description:</strong> {detail.meta_description}
-            </p>
-            <p>
-              <strong>Meta Keywords:</strong> {detail.meta_keywords}
-            </p>
-          </div>
-        ) : (
-          <p>Detail not found.</p>
-        )}
-      </div> */}
       <div className="container mt-5">
         {loading ? (
           <p className="text-center">Loading...</p>

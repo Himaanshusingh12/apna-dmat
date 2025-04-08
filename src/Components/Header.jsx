@@ -131,7 +131,7 @@ function Header({ pageTitle, breadcrumb1 }) {
                     service.map((service, index) => (
                       <NavLink
                         key={service.id}
-                        to={`/sub-service/${service.service_id}`}
+                        to={`/service/${service.slug}`}
                         className="dropdown-item"
                       >
                         {service.title}
@@ -159,7 +159,7 @@ function Header({ pageTitle, breadcrumb1 }) {
                     blog.map((blog, index) => (
                       <NavLink
                         key={blog.id}
-                        to={`/blog-list/${blog.blog_id}`}
+                        to={`/blog-list/${blog.slug}`}
                         className="dropdown-item"
                       >
                         {blog.category}
@@ -199,9 +199,6 @@ function Header({ pageTitle, breadcrumb1 }) {
             >
               <li className="breadcrumb-item">
                 <NavLink to="/">Home</NavLink>
-              </li>
-              <li className="breadcrumb-item">
-                <a href="#">Pages</a>
               </li>
               <li className="breadcrumb-item active text-primary">
                 {breadcrumb1}

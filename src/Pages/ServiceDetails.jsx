@@ -7,18 +7,19 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 
 function ServiceDetails() {
-  const { subservice_id } = useParams();
+  // const { subservice_id } = useParams();
+  const { subservice_slug } = useParams();
   const [servicedetail, Setservicedetail] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchServicedetail();
-  }, [subservice_id]);
+  }, [subservice_slug]);
 
   const fetchServicedetail = async () => {
     try {
       const response = await axios.get(
-        `${BACKEND_URL}/api/service-detail/subservice-detail/${subservice_id}`
+        `${BACKEND_URL}/api/service-detail/subservice-detail/${subservice_slug}`
       );
       if (response.status === 200) {
         Setservicedetail(response.data.data);
