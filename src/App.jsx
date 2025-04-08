@@ -79,7 +79,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="/blog-list/:slug"
+            path="/blog/:slug"
             element={
               <>
                 <BlogList />

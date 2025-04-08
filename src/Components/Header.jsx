@@ -159,7 +159,7 @@ function Header({ pageTitle, breadcrumb1 }) {
                     blog.map((blog, index) => (
                       <NavLink
                         key={blog.id}
-                        to={`/blog-list/${blog.slug}`}
+                        to={`/blog/${blog.slug}`}
                         className="dropdown-item"
                       >
                         {blog.category}
