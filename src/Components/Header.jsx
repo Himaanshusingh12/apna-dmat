@@ -20,13 +20,13 @@ function Header({ pageTitle, breadcrumb1 }) {
       );
       if (response.status === 200) {
         Setaccountsetting(response.data.data);
-        console.log("The Fetched Accounting setting are:", response.data);
+        // console.log("The Fetched Accounting setting are:", response.data);
       }
     } catch (error) {
-      console.error(
-        "Error fetching Account setting:",
-        error.response?.data || error.message
-      );
+      // console.error(
+      //   "Error fetching Account setting:",
+      //   error.response?.data || error.message
+      // );
       toast.error(
         `Error fetching account setting: ${
           error.response?.data?.message || error.message
@@ -49,13 +49,13 @@ function Header({ pageTitle, breadcrumb1 }) {
       );
       if (response.status === 200) {
         Setservice(response.data.data);
-        console.log("The Fetched Service are:", response.data);
+        // console.log("The Fetched Service are:", response.data);
       }
     } catch (error) {
-      console.error(
-        "Error fetching service:",
-        error.response?.data || error.message
-      );
+      // console.error(
+      //   "Error fetching service:",
+      //   error.response?.data || error.message
+      // );
       toast.error(
         `Error fetching service: ${
           error.response?.data?.message || error.message
@@ -64,44 +64,16 @@ function Header({ pageTitle, breadcrumb1 }) {
     }
   };
 
-  // section for fetch Active Blog category
-  const [blog, Setblog] = useState([]);
-
-  useEffect(() => {
-    fetchActiveblog();
-  }, []);
-
-  const fetchActiveblog = async () => {
-    try {
-      const response = await axios.get(
-        `${BACKEND_URL}/api/blog-category/get-active`
-      );
-      if (response.status === 200) {
-        Setblog(response.data.data);
-        console.log("The fetched Active blog are", response.data);
-      }
-    } catch (error) {
-      console.error(
-        "Error fetching Blog category:",
-        error.response?.data || error.message
-      );
-      toast.error(
-        `Error fetching Blog category: ${
-          error.response?.data?.message || error.message
-        }`
-      );
-    }
-  };
   return (
     <>
       {/* Header Start */}
       <div className="container-fluid position-relative p-0">
         <nav className="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-          <a href className="navbar-brand p-0">
+          <Link to="/" className="navbar-brand p-0">
             <h1 className="text-primary">
               <img src={accountsetting[0]?.logo} className="" alt />
             </h1>
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -146,7 +118,7 @@ function Header({ pageTitle, breadcrumb1 }) {
               </div>
 
               {/* blog section */}
-              <div className="nav-item dropdown">
+              {/* <div className="nav-item dropdown">
                 <a
                   href="#"
                   className="nav-link dropdown-toggle"
@@ -171,7 +143,10 @@ function Header({ pageTitle, breadcrumb1 }) {
                     </span>
                   )}
                 </div>
-              </div>
+              </div> */}
+              <NavLink to="/blogs" className="nav-item nav-link">
+                Blogs
+              </NavLink>
               <NavLink to="/contact" className="nav-item nav-link">
                 Contact Us
               </NavLink>

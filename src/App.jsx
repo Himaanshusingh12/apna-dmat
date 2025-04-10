@@ -2,9 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import About from "./Pages/About";
 import Home from "./Pages/Home";
 import Contact from "./Pages/Contact";
-import Search from "./Pages/Search";
 import EquityTrading from "./Pages/EquityTrading";
-import Fando from "./Pages/Fando";
 import SipPlans from "./Pages/SipPlans";
 import PNF from "./Pages/PNF";
 import { ToastContainer } from "react-toastify";
@@ -20,12 +18,15 @@ import SipCalculator from "./Pages/SipCalculator";
 import SwpCalculator from "./Pages/SwpCalculator";
 import LumpsumCalculator from "./Pages/LumpsumCalculator";
 import TermplanCalculator from "./Pages/TermplanCalculator";
+import AccountSettingLoader from "./Components/AccountSettinLoader";
+import Blogs from "./Pages/Blogs";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <ToastContainer></ToastContainer>
+        <AccountSettingLoader />
         <PopUp />
         <Routes>
           <Route
@@ -54,7 +55,6 @@ function App() {
             }
           ></Route>
           <Route
-            // path="/service/:service_slug/:subservice_slug"
             path="/:service_slug/:subservice_slug"
             element={
               <>
@@ -79,6 +79,14 @@ function App() {
             }
           ></Route>
           <Route
+            path="/blogs"
+            element={
+              <>
+                <Blogs />
+              </>
+            }
+          ></Route>
+          <Route
             path="/blog/:slug"
             element={
               <>
@@ -87,7 +95,9 @@ function App() {
             }
           />
           <Route
-            path="/blog-detail/:slug"
+            // path="/blog-detail/:slug"
+            // path="/blog/:categorySlug/:slug"
+            path="/blog/:categorySlug/:slug"
             element={
               <>
                 <BlogDetail />
@@ -103,26 +113,10 @@ function App() {
             }
           ></Route>
           <Route
-            path="/search"
-            element={
-              <>
-                <Search />
-              </>
-            }
-          ></Route>
-          <Route
             path="/equity-trading"
             element={
               <>
                 <EquityTrading />
-              </>
-            }
-          ></Route>
-          <Route
-            path="/f&o"
-            element={
-              <>
-                <Fando />
               </>
             }
           ></Route>

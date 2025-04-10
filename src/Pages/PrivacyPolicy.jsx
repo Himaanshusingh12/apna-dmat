@@ -20,18 +20,14 @@ function PrivacyPolicy() {
       );
       if (response.status === 200 && response.data.data.length > 0) {
         Setprivacypolicy(response.data.data[0]);
-        // console.log(
-        //   "The fetched active privacy policy is",
-        //   response.data.data[0]
-        // );
       } else {
         Setprivacypolicy(null);
       }
     } catch (error) {
-      console.error(
-        "Error fetching privacy policy:",
-        error.response?.data || error.message
-      );
+      // console.error(
+      //   "Error fetching privacy policy:",
+      //   error.response?.data || error.message
+      // );
       toast.error(
         `Error fetching privacy policy: ${
           error.response?.data?.message || error.message

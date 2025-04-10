@@ -21,17 +21,22 @@ function BlogList() {
         `${BACKEND_URL}/api/blog-category/category/${slug}`
       );
       if (response.status === 200) {
-        console.log("Response Data: ", response.data);
+        // console.log("Response Data: ", response.data);
         setList(response.data.data);
-        console.log("The fetched Blog list:", response.data);
+        // console.log("The fetched Blog list:", response.data);
       }
     } catch (error) {
-      console.error("Error fetching blog list:", error);
+      // console.error("Error fetching blog list:", error);
     } finally {
       setLoading(false);
     }
   };
-  console.log("slug", slug);
+  // console.log("slug", slug);
+  const stripHtml = (html) => {
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    return div.textContent || div.innerText || "";
+  };
   return (
     <>
       <TopBar />
@@ -54,12 +59,14 @@ function BlogList() {
                   <div className="card-body">
                     <h5 className="card-title">{blog.title}</h5>
                     <p className="card-text">
-                      {blog.description.length > 100
-                        ? blog.description.slice(0, 100) + "..."
-                        : blog.description}
+                      {stripHtml(blog.description).length > 100
+                        ? stripHtml(blog.description).slice(0, 100) + "..."
+                        : stripHtml(blog.description)}
                     </p>
                     <Link
-                      to={`/blog-detail/${blog.slug}`}
+                      // to={`/blog-detail/${blog.slug}`}
+                      to={`/blog/${slug}/${blog.slug}`}
+                      // to={`/${slug}/${blog.slug}`}
                       className="btn btn-primary"
                     >
                       Read More

@@ -20,18 +20,18 @@ function TermsCondition() {
       );
       if (response.status === 200 && response.data.data.length > 0) {
         Settermscondition(response.data.data[0]);
-        console.log(
-          "The fetched active terms condition is",
-          response.data.data[0]
-        );
+        // console.log(
+        //   "The fetched active terms condition is",
+        //   response.data.data[0]
+        // );
       } else {
         Settermscondition(null);
       }
     } catch (error) {
-      console.error(
-        "Error fetching terms condition:",
-        error.response?.data || error.message
-      );
+      // console.error(
+      //   "Error fetching terms condition:",
+      //   error.response?.data || error.message
+      // );
       toast.error(
         `Error fetching terms condition: ${
           error.response?.data?.message || error.message

@@ -17,13 +17,13 @@ function Footer() {
       );
       if (response.status === 200) {
         Setaccountsetting(response.data.data);
-        console.log("The Fetched Testimonial are:", response.data);
+        // console.log("The Fetched Testimonial are:", response.data);
       }
     } catch (error) {
-      console.error(
-        "Error fetching Account setting:",
-        error.response?.data || error.message
-      );
+      // console.error(
+      //   "Error fetching Account setting:",
+      //   error.response?.data || error.message
+      // );
       toast.error(
         `Error fetching account setting: ${
           error.response?.data?.message || error.message
@@ -98,7 +98,7 @@ function Footer() {
             <div className="col-md-6 col-lg-6 col-xl-3">
               <div className="footer-item text-white">
                 <h4 className="text-white mb-4">Support</h4>
-                <NavLink to="privacy-policy">
+                <NavLink to="/privacy-policy">
                   <i className="fas fa-angle-right me-2" /> Privacy Policy
                 </NavLink>
                 <NavLink to="/terms-condition">

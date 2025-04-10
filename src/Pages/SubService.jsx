@@ -23,10 +23,10 @@ function SubService() {
       );
       if (response.status === 200) {
         setSubservices(response.data.data);
-        console.log("The fetched subservices are", response.data);
+        // console.log("The fetched subservices are", response.data);
       }
     } catch (error) {
-      console.error("Error fetching subservices:", error);
+      // console.error("Error fetching subservices:", error);
     } finally {
       setLoading(false);
     }

@@ -3,6 +3,7 @@ import TopBar from "../Components/TopBar";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import "../Styles/Service.css";
+import "../Styles/Home.css";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
@@ -25,13 +26,13 @@ function Home() {
       );
       if (response.status === 200) {
         Setservice(response.data.data);
-        console.log("The Fetched Service are:", response.data);
+        // console.log("The Fetched Service are:", response.data);
       }
     } catch (error) {
-      console.error(
-        "Error fetching service:",
-        error.response?.data || error.message
-      );
+      // console.error(
+      //   "Error fetching service:",
+      //   error.response?.data || error.message
+      // );
       toast.error(
         `Error fetching service: ${
           error.response?.data?.message || error.message
@@ -68,13 +69,13 @@ function Home() {
       );
       if (response.status === 200) {
         SetTestimonial(response.data.data);
-        console.log("The Fetched Testimonial are:", response.data);
+        // console.log("The Fetched Testimonial are:", response.data);
       }
     } catch (error) {
-      console.error(
-        "Error fetching testimonial:",
-        error.response?.data || error.message
-      );
+      // console.error(
+      //   "Error fetching testimonial:",
+      //   error.response?.data || error.message
+      // );
       toast.error(
         `Error fetching testimonial: ${
           error.response?.data?.message || error.message
@@ -94,13 +95,13 @@ function Home() {
       const response = await axios.get(`${BACKEND_URL}/api/slider/get-active`);
       if (response.status === 200) {
         Setslider(response.data.data);
-        console.log("The Fetched Slider are:", response.data);
+        // console.log("The Fetched Slider are:", response.data);
       }
     } catch (error) {
-      console.error(
-        "Error fetching slider:",
-        error.response?.data || error.message
-      );
+      // console.error(
+      //   "Error fetching slider:",
+      //   error.response?.data || error.message
+      // );
       toast.error(
         `Error fetching slider: ${
           error.response?.data?.message || error.message
@@ -123,13 +124,13 @@ function Home() {
       );
       if (response.status === 200) {
         Setaccountsetting(response.data.data);
-        console.log("The Fetched Accounting setting are:", response.data);
+        // console.log("The Fetched Accounting setting are:", response.data);
       }
     } catch (error) {
-      console.error(
-        "Error fetching Account setting:",
-        error.response?.data || error.message
-      );
+      // console.error(
+      //   "Error fetching Account setting:",
+      //   error.response?.data || error.message
+      // );
       toast.error(
         `Error fetching account setting: ${
           error.response?.data?.message || error.message
@@ -152,7 +153,7 @@ function Home() {
           nav
           items={1}
           autoplay
-          autoplayTimeout={5000}
+          autoplayTimeout={3000}
           smartSpeed={1000}
         >
           {/* Slide 1 */}
@@ -360,108 +361,72 @@ function Home() {
       </div>
 
       {/* about section  */}
-      <div className="container-fluid about py-1">
-        <div className="container py-5">
+      <div className="container-fluid about py-5 bg-light">
+        <div className="container">
           <div className="row g-5 align-items-center">
+            {/* Left Side - Text Content */}
             <div className="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
               <div>
-                <h4 className="text-primary">About Us</h4>
-                <h1 className="display-5 mb-4">
-                  Meet our company unless miss the opportunity
+                <h4 className="text-primary fw-bold mb-3 text-uppercase">
+                  About Us
+                </h4>
+                <h1 className="display-5 fw-semibold mb-4">
+                  Empowering Your Financial Journey in the Stock Market
                 </h1>
-                <p className="mb-4">
-                  We are a dynamic team with over 16 years of expertise in the
-                  stock market, providing top-tier consultancy services and
-                  managing significant AUM for our clients.
+                <p className="mb-4 text-muted fs-5">
+                  With over 16 years of experience, we offer reliable investment
+                  consultancy, smart portfolio management, and personalized
+                  wealth-building strategies to help you grow with confidence.
                 </p>
+
                 <div className="row g-4">
-                  <div className="col-md-6 col-lg-6 col-xl-6">
-                    <div className="d-flex">
+                  <div className="col-md-6">
+                    <div className="d-flex align-items-start">
+                      <i className="fas fa-chart-line fa-2x text-primary me-3" />
                       <div>
-                        <i className="fas fa-lightbulb fa-3x text-primary" />
-                      </div>
-                      <div className="ms-4">
-                        <h4>Business Consulting</h4>
-                        <p>
-                          We offer professional business consulting services to
-                          help you make informed decisions.
+                        <h5 className="mb-2">Expert Guidance</h5>
+                        <p className="mb-0 text-muted">
+                          Unlock powerful stock market insights and risk-managed
+                          strategies from seasoned professionals.
                         </p>
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-6 col-lg-6 col-xl-6">
-                    <div className="d-flex">
+                  <div className="col-md-6">
+                    <div className="d-flex align-items-start">
+                      <i className="fas fa-user-clock fa-2x text-primary me-3" />
                       <div>
-                        <i className="bi bi-bookmark-heart-fill fa-3x text-primary" />
-                      </div>
-                      <div className="ms-4">
-                        <h4>Year Of Expertise</h4>
-                        <p>
-                          With over 16 years of hands-on experience, we provide
-                          insights into the stock market and other financial
-                          strategies.
+                        <h5 className="mb-2">16+ Years of Experience</h5>
+                        <p className="mb-0 text-muted">
+                          Navigating every market phase with time-tested
+                          knowledge and trusted decision-making.
                         </p>
                       </div>
                     </div>
                   </div>
-                  <div className="col-sm-6">
+                  <div className="col-12 mt-4">
                     <NavLink
                       to="/about"
-                      className="btn btn-primary rounded-pill py-3 px-5 flex-shrink-0"
+                      className="btn btn-primary btn-lg rounded-pill px-5 py-3 shadow-sm"
                     >
-                      Discover Now
+                      Learn More About Us
                     </NavLink>
                   </div>
                 </div>
               </div>
             </div>
+
+            {/* Right Side - Image Content */}
             <div className="col-xl-5 wow fadeInRight" data-wow-delay="0.2s">
-              <div className="bg-primary rounded position-relative overflow-hidden">
+              <div className="position-relative rounded overflow-hidden shadow-lg">
                 <img
-                  src="img/about-2.png"
-                  className="img-fluid rounded w-100"
+                  src="img/about6.jpg"
+                  className="img-fluid rounded-top w-100"
                   alt="About Us"
                 />
-                {/* <div
-                  style={{
-                    position: "absolute",
-                    top: "-15px",
-                    right: "-15px",
-                  }}
-                >
-                  <img
-                    src="img/about-3.png"
-                    className="img-fluid"
-                    style={{ width: 150, height: 150, opacity: "0.7" }}
-                    alt="About Image 3"
-                  />
-                </div> */}
-                {/* <div
-                  style={{
-                    position: "absolute",
-                    top: "-20px",
-                    left: 10,
-                    transform: "rotate(90deg)",
-                  }}
-                >
-                  <img
-                    src="img/about-4.png"
-                    className="img-fluid"
-                    style={{ width: 100, height: 150, opacity: "0.9" }}
-                    alt="About Image 4"
-                  />
-                </div> */}
-                <div className="rounded-bottom">
-                  <img
-                    src="img/about-5.jpg"
-                    className="img-fluid rounded-bottom w-100"
-                    alt="About Image 5"
-                  />
-                </div>
               </div>
             </div>
           </div>
-          {/* Additional feature section */}
         </div>
       </div>
 

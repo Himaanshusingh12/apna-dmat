@@ -18,13 +18,13 @@ function TopBar() {
       );
       if (response.status === 200) {
         Setaccountsetting(response.data.data);
-        console.log("The Fetched Testimonial are:", response.data);
+        // console.log("The Fetched Testimonial are:", response.data);
       }
     } catch (error) {
-      console.error(
-        "Error fetching Account setting:",
-        error.response?.data || error.message
-      );
+      // console.error(
+      //   "Error fetching Account setting:",
+      //   error.response?.data || error.message
+      // );
       toast.error(
         `Error fetching account setting: ${
           error.response?.data?.message || error.message

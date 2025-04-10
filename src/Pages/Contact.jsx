@@ -67,7 +67,7 @@ function Contact() {
       });
     } catch (err) {
       toast.error("Error sending message");
-      console.error(err);
+      // console.error(err);
     }
   };
 
@@ -85,13 +85,13 @@ function Contact() {
       );
       if (response.status === 200) {
         Setaccountsetting(response.data.data);
-        console.log("The Fetched Testimonial are:", response.data);
+        // console.log("The Fetched Testimonial are:", response.data);
       }
     } catch (error) {
-      console.error(
-        "Error fetching Account setting:",
-        error.response?.data || error.message
-      );
+      // console.error(
+      //   "Error fetching Account setting:",
+      //   error.response?.data || error.message
+      // );
       toast.error(
         `Error fetching account setting: ${
           error.response?.data?.message || error.message
@@ -141,7 +141,7 @@ function Contact() {
                   <div className="text-primary mb-2">
                     <i className="fa fa-phone-alt fa-2x" />
                   </div>
-                  <h5>Telephone</h5>
+                  <h5>Mobile</h5>
                   <p className="mb-0">
                     {accountsetting?.[0]?.mobile_number ||
                       "No number available"}
@@ -151,10 +151,10 @@ function Contact() {
                 {/* Website */}
                 <div className="col-md-6 col-lg-3 d-flex flex-column align-items-center">
                   <div className="text-primary mb-2">
-                    <i className="fab fa-firefox-browser fa-2x" />
+                    <i className="fas fa-phone-square-alt fa-2x" />
                   </div>
-                  <h5>Website</h5>
-                  <p className="mb-0">apnadmat.com</p>
+                  <h5>LandLine</h5>
+                  <p className="mb-0">079 49189316</p>
                 </div>
               </div>
             </div>

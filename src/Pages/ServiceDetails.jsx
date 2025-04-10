@@ -23,10 +23,10 @@ function ServiceDetails() {
       );
       if (response.status === 200) {
         Setservicedetail(response.data.data);
-        console.log("The fetched services details", response.data);
+        // console.log("The fetched services details", response.data);
       }
     } catch (error) {
-      console.error("Error fetching service details:", error);
+      // console.error("Error fetching service details:", error);
     } finally {
       setLoading(false);
     }

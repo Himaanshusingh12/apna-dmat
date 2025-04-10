@@ -18,13 +18,13 @@ function Navbar() {
       );
       if (response.status === 200) {
         Setaccountsetting(response.data.data);
-        console.log("The Fetched Accounting setting are:", response.data);
+        // console.log("The Fetched Accounting setting are:", response.data);
       }
     } catch (error) {
-      console.error(
-        "Error fetching Account setting:",
-        error.response?.data || error.message
-      );
+      // console.error(
+      //   "Error fetching Account setting:",
+      //   error.response?.data || error.message
+      // );
       toast.error(
         `Error fetching account setting: ${
           error.response?.data?.message || error.message
@@ -47,44 +47,15 @@ function Navbar() {
       );
       if (response.status === 200) {
         Setservice(response.data.data);
-        console.log("The Fetched Service are:", response.data);
+        // console.log("The Fetched Service are:", response.data);
       }
     } catch (error) {
-      console.error(
-        "Error fetching service:",
-        error.response?.data || error.message
-      );
+      // console.error(
+      //   "Error fetching service:",
+      //   error.response?.data || error.message
+      // );
       toast.error(
         `Error fetching service: ${
-          error.response?.data?.message || error.message
-        }`
-      );
-    }
-  };
-
-  // section for fetch active blog category
-  const [blog, Setblog] = useState([]);
-
-  useEffect(() => {
-    fetchActiveblog();
-  }, []);
-
-  const fetchActiveblog = async () => {
-    try {
-      const response = await axios.get(
-        `${BACKEND_URL}/api/blog-category/get-active`
-      );
-      if (response.status === 200) {
-        Setblog(response.data.data);
-        console.log("The fetched Active blog are", response.data);
-      }
-    } catch (error) {
-      console.error(
-        "Error fetching Blog category:",
-        error.response?.data || error.message
-      );
-      toast.error(
-        `Error fetching Blog category: ${
           error.response?.data?.message || error.message
         }`
       );
@@ -148,34 +119,9 @@ function Navbar() {
                   )}
                 </div>
               </div>
-
-              {/* blog section */}
-              <div className="nav-item dropdown">
-                <a
-                  href="#"
-                  className="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                >
-                  Blogs
-                </a>
-                <div className="dropdown-menu m-0">
-                  {blog.length > 0 ? (
-                    blog.map((blog, index) => (
-                      <NavLink
-                        key={blog.id}
-                        to={`/blog/${blog.slug}`}
-                        className="dropdown-item"
-                      >
-                        {blog.category}
-                      </NavLink>
-                    ))
-                  ) : (
-                    <span className="dropdown-item text-muted">
-                      No Blog available
-                    </span>
-                  )}
-                </div>
-              </div>
+              <NavLink to="/blogs" className="nav-item nav-link">
+                Blogs
+              </NavLink>
               <NavLink to="/contact" className="nav-item nav-link">
                 Contact Us
               </NavLink>

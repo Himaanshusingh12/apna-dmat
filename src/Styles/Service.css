@@ -76,7 +76,7 @@
     align-items: center;
     justify-content: center;
      /* background: var(--primary); */
-     background: #00ff82;
+     background: #00D084;
     border-radius: 2px;
     transform: rotate(-45deg);
     transition: background-color 0.5s;
@@ -115,11 +115,13 @@
 }
 
 .service-item:hover {
-    background-color: #00ff82 !important;
+    /* background-color: #00ff82 !important; */
+        background-color: #00D084 !important;
+
     cursor: pointer;
 }
 .item-1:hover {
-    background-color: #00ff82 !important; 
+    background-color: #00D084 !important; 
     color: #fff;
 }
 
@@ -135,11 +137,13 @@
 }
 
 .service-item:hover .service-icon i {
-    color: #00ff82 !important; 
+    color: #00D084 !important; 
 }
 
 /* testimonial */
 .testimonial-bg{
-    background-color: #00ff82;
+    background-color: #00D084;
 }
+
+  
 

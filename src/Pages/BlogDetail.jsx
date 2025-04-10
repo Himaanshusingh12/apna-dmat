@@ -7,7 +7,6 @@ import axios from "axios";
 import { BACKEND_URL } from "../Constant";
 
 function BlogDetail() {
-  // const { blogdetail_id } = useParams();
   const { slug } = useParams();
   const [detail, setdetail] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -23,10 +22,10 @@ function BlogDetail() {
       );
       if (response.status === 200) {
         setdetail(response.data.data);
-        console.log("Fetched blog details:", response.data);
+        // console.log("Fetched blog details:", response.data);
       }
     } catch (error) {
-      console.error("Error fetching blog details:", error);
+      // console.error("Error fetching blog details:", error);
     } finally {
       setLoading(false);
     }
@@ -47,15 +46,23 @@ function BlogDetail() {
               className="img-fluid rounded mb-4"
               style={{ maxHeight: "200px", objectFit: "cover" }}
             />
-            <p>{detail.description}</p>
+            {/* <p>{detail.description}</p> */}
+            <div dangerouslySetInnerHTML={{ __html: detail.description }} />
             <div className="bg-light p-3 rounded">
               <h5>Meta Information:</h5>
               <p>
                 <strong>Meta Title:</strong> {detail.meta_title}
               </p>
-              <p>
+              {/* <p>
                 <strong>Meta Description:</strong> {detail.meta_description}
+              </p> */}
+              <p>
+                <strong>Meta Description:</strong>{" "}
+                <span
+                  dangerouslySetInnerHTML={{ __html: detail.meta_description }}
+                ></span>
               </p>
+
               <p>
                 <strong>Meta Keywords:</strong> {detail.meta_keywords}
               </p>

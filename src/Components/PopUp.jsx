@@ -77,7 +77,7 @@ function PopUp() {
       });
     } catch (err) {
       toast.error("Error sending message");
-      console.error(err);
+      // console.error(err);
     }
   };
   return (
@@ -88,6 +88,7 @@ function PopUp() {
         tabIndex="-1"
         aria-labelledby="popupModalLabel"
         aria-hidden="true"
+        data-bs-backdrop="static"
         data-bs-keyboard="false"
       >
         <div className="modal-dialog">
