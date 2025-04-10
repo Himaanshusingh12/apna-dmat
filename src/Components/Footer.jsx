@@ -123,7 +123,7 @@ function Footer() {
               <div className="footer-item">
                 <h4 className="text-white mb-4">Contact Info</h4>
                 <div className="d-flex align-items-center">
-                  <p className="text-white small mb-0">
+                  <p className="text-white mb-0">
                     <i className="fas fa-map-marker-alt text-primary me-2"></i>
                     {accountsetting?.[0]?.address || "No address available"}
                   </p>
@@ -131,15 +131,15 @@ function Footer() {
                 <div className="d-flex align-items-center">
                   <a
                     href={`mailto:${accountsetting?.[0]?.email_one}`}
-                    className="text-white small me-0"
+                    className="text-white me-0"
                   >
                     <i className="fas fa-envelope text-primary me-2" />
                     {accountsetting?.[0]?.email_one || "No email available"}
                   </a>
                 </div>
                 <div className="d-flex align-items-center">
-                  <p className="text-white small mb-0">
-                    <i className="fa fa-phone-alt text-primary me-3" />
+                  <p className="text-white  mb-0">
+                    <i className="fa fa-phone-alt text-primary me-2" />
                     {accountsetting?.[0]?.mobile_number ||
                       "No mobile number available"}
                   </p>
