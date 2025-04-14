@@ -7,7 +7,6 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 
 function ServiceDetails() {
-  // const { subservice_id } = useParams();
   const { subservice_slug } = useParams();
   const [servicedetail, Setservicedetail] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -23,10 +22,8 @@ function ServiceDetails() {
       );
       if (response.status === 200) {
         Setservicedetail(response.data.data);
-        // console.log("The fetched services details", response.data);
       }
     } catch (error) {
-      // console.error("Error fetching service details:", error);
     } finally {
       setLoading(false);
     }
@@ -36,32 +33,40 @@ function ServiceDetails() {
       <TopBar />
       <Header pageTitle="Service Detail" breadcrumb1="Service detail" />
       <div className="container py-5">
-        {servicedetail.length > 0 ? (
+        {loading ? (
+          <p className="text-center">Loading...</p>
+        ) : servicedetail.length > 0 ? (
           servicedetail.map((service) => (
-            <div key={service.id} className="row g-5">
-              {/* Image and Short Description Section */}
-              <div className="col-md-6 d-flex align-items-center justify-content-center">
+            <div
+              key={service.id}
+              className="row g-5 align-items-center bg-white shadow rounded p-4 mb-5"
+            >
+              <div className="col-md-6 text-center">
                 <img
                   src={service.image}
                   alt="Service"
-                  className="img-fluid rounded shadow"
-                  style={{ maxHeight: "400px", objectFit: "cover" }}
+                  className="img-fluid rounded shadow-sm"
+                  style={{
+                    maxHeight: "400px",
+                    objectFit: "cover",
+                    borderRadius: "12px",
+                  }}
                 />
               </div>
-              <div className="col-md-6 d-flex align-items-center">
-                <div>
-                  <h3 className="text-primary fw-bold">Service Overview</h3>
-                  <p className="lead">{service.sort_description}</p>
-                </div>
+
+              <div className="col-md-6">
+                <h2 className="text-primary fw-bold mb-3">Service Overview</h2>
+                <p className="lead text-muted">{service.sort_description}</p>
               </div>
 
-              {/* Full Description Section */}
               <div className="col-12 mt-4">
-                <div className="p-4 bg-light">
-                  <h4 className="text-secondary fw-bold">
+                <div className="bg-light p-4 rounded shadow-sm">
+                  <h4 className="text-secondary fw-bold mb-3">
                     Service Description
                   </h4>
-                  <p className="mt-2">{service.description}</p>
+                  <p className="mb-0" style={{ lineHeight: "1.8" }}>
+                    {service.description}
+                  </p>
                 </div>
               </div>
             </div>
