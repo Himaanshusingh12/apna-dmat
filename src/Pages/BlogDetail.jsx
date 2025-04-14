@@ -44,7 +44,7 @@ function BlogDetail() {
               src={detail.image}
               alt={detail.title}
               className="img-fluid rounded mb-4"
-              style={{ maxHeight: "200px", objectFit: "cover" }}
+              style={{ maxHeight: "500px", objectFit: "cover" }}
             />
             {/* <p>{detail.description}</p> */}
             <div dangerouslySetInnerHTML={{ __html: detail.description }} />
