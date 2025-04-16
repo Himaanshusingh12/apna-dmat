@@ -24,10 +24,6 @@ function PrivacyPolicy() {
         Setprivacypolicy(null);
       }
     } catch (error) {
-      // console.error(
-      //   "Error fetching privacy policy:",
-      //   error.response?.data || error.message
-      // );
       toast.error(
         `Error fetching privacy policy: ${
           error.response?.data?.message || error.message
@@ -40,7 +36,7 @@ function PrivacyPolicy() {
       <TopBar />
       <Header pageTitle="Privacy Policy" breadcrumb1="Privacy Policy" />
       <div className="container my-4">
-        <h2 className="text-center">Privacy Policy</h2>
+        <h2 className="text-center text-primary">Privacy Policy</h2>
 
         {privacypolicy ? (
           <div

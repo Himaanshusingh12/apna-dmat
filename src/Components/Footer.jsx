@@ -50,24 +50,10 @@ function Footer() {
               <div className="footer-item">
                 <h4 className="text-white mb-4">Apna Dmat</h4>
                 <p className="mb-4 text-white">
-                  <span className="font-weight-bold">
-                    Taking care of 3500+ clients
-                  </span>{" "}
-                  <br />
-                  Authorized partner of{" "}
-                  <span className="text-primary font-weight-bold">
-                    Angel One
-                  </span>{" "}
-                  for the last 7 years <br />
-                  <span className="font-weight-bold">
-                    9 years of immense experience
-                  </span>{" "}
-                  with Angel One as both an employee & partner <br />
-                  Elite partnership with{" "}
-                  <span className="text-primary font-weight-bold">
-                    Angel One
-                  </span>{" "}
-                  and AMFI certified MF distributor
+                  Taking care of 3500+ clients, Authorized partner of Angel One
+                  for the last 7 years, 9 years of immense experience with Angel
+                  One as both an employee & partner, Elite partnership with
+                  Angel One and AMFI certified MF distributor.
                 </p>
               </div>
             </div>

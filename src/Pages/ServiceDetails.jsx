@@ -61,12 +61,14 @@ function ServiceDetails() {
 
               <div className="col-12 mt-4">
                 <div className="bg-light p-4 rounded shadow-sm">
-                  <h4 className="text-secondary fw-bold mb-3">
+                  {/* <h4 className="text-secondary fw-bold mb-3">
                     Service Description
-                  </h4>
-                  <p className="mb-0" style={{ lineHeight: "1.8" }}>
-                    {service.description}
-                  </p>
+                  </h4> */}
+                  <div
+                    className="mb-0"
+                    style={{ lineHeight: "1.8" }}
+                    dangerouslySetInnerHTML={{ __html: service.description }}
+                  ></div>
                 </div>
               </div>
             </div>
