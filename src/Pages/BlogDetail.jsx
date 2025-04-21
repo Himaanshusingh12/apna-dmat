@@ -124,12 +124,12 @@ function BlogDetail() {
                 <ul className="list-unstyled">
                   {categories.map((item) => (
                     <li key={item.blog_id}>
-                      <a
+                      <Link
                         href={`/blog/${item.slug}`}
                         className="text-decoration-none text-dark"
                       >
                         {item.category}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
