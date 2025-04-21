@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BACKEND_URL } from "../Constant";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import TopBar from "../Components/TopBar";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
@@ -57,13 +57,16 @@ function ServiceDetails() {
               <div className="col-md-6">
                 <h2 className="text-primary fw-bold mb-3">Service Overview</h2>
                 <p className="lead text-muted">{service.sort_description}</p>
+                {/* Contact Us Button */}
+                <div className="text-center mt-4">
+                  <NavLink to="/contact" className="btn btn-primary py-2 px-4">
+                    Contact Us
+                  </NavLink>
+                </div>
               </div>
 
               <div className="col-12 mt-4">
                 <div className="bg-light p-4 rounded shadow-sm">
-                  {/* <h4 className="text-secondary fw-bold mb-3">
-                    Service Description
-                  </h4> */}
                   <div
                     className="mb-0"
                     style={{ lineHeight: "1.8" }}

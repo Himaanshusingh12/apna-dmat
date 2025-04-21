@@ -95,7 +95,6 @@ function App() {
             }
           />
           <Route
-            // path="/blog-detail/:slug"
             // path="/blog/:categorySlug/:slug"
             path="/blog/:categorySlug/:slug"
             element={

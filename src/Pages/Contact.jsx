@@ -5,6 +5,7 @@ import Footer from "../Components/Footer";
 import axios from "axios";
 import { BACKEND_URL } from "../Constant";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 function Contact() {
   const [formData, SetFormdata] = useState({
@@ -85,13 +86,8 @@ function Contact() {
       );
       if (response.status === 200) {
         Setaccountsetting(response.data.data);
-        // console.log("The Fetched Testimonial are:", response.data);
       }
     } catch (error) {
-      // console.error(
-      //   "Error fetching Account setting:",
-      //   error.response?.data || error.message
-      // );
       toast.error(
         `Error fetching account setting: ${
           error.response?.data?.message || error.message
@@ -99,8 +95,40 @@ function Contact() {
       );
     }
   };
+
+  // section for fetch meta title , meta description and meta keywords
+  const [seoDetail, SetseoDetail] = useState([]);
+
+  useEffect(() => {
+    fetchSeodetail();
+  }, []);
+
+  const fetchSeodetail = async () => {
+    try {
+      const response = await axios.get(`${BACKEND_URL}/api/seo/get-active`);
+      if (response.status === 200) {
+        SetseoDetail(response.data.data);
+        // console.log("The Fetched seo detail are:", response.data);
+      }
+    } catch (error) {
+      toast.error(
+        `Error fetching seo detail: ${
+          error.response?.data?.message || error.message
+        }`
+      );
+    }
+  };
+
+  const contactSeo = seoDetail.find((item) => item.page_name === "contact");
   return (
     <>
+      {contactSeo && (
+        <Helmet>
+          <title>{contactSeo.meta_title}</title>
+          <meta name="description" content={contactSeo.meta_description} />
+          <meta name="keywords" content={contactSeo.meta_keywords} />
+        </Helmet>
+      )}
       <TopBar />
       <Header pageTitle="Contact Us" breadcrumb1="Contact" />
       <div className="container-fluid contact py-5">

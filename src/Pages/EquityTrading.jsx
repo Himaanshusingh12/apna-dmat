@@ -81,7 +81,6 @@ function EquityTrading() {
         </div>
       </div> */}
       <div className="container py-5">
-        {/* Page Title */}
         <div className="text-center mb-5">
           <h1 className="fw-bold display-5">📈 Equity Market Overview</h1>
           <p className="text-secondary fs-5">
@@ -89,12 +88,10 @@ function EquityTrading() {
           </p>
         </div>
 
-        {/* Stylish Card */}
         <div className="card shadow-lg border-0 rounded-4">
           <div
             className="card-header text-white rounded-top-4"
             style={{
-              // background: "linear-gradient(135deg, #007bff, #6610f2)",
               color: "#fff",
               background: "#00ff82",
             }}

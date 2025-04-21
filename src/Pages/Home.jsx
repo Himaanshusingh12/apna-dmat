@@ -11,6 +11,7 @@ import axios from "axios";
 import { BACKEND_URL } from "../Constant";
 import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 function Home() {
   const [service, Setservice] = useState([]);
@@ -29,10 +30,6 @@ function Home() {
         // console.log("The Fetched Service are:", response.data);
       }
     } catch (error) {
-      // console.error(
-      //   "Error fetching service:",
-      //   error.response?.data || error.message
-      // );
       toast.error(
         `Error fetching service: ${
           error.response?.data?.message || error.message
@@ -72,10 +69,6 @@ function Home() {
         // console.log("The Fetched Testimonial are:", response.data);
       }
     } catch (error) {
-      // console.error(
-      //   "Error fetching testimonial:",
-      //   error.response?.data || error.message
-      // );
       toast.error(
         `Error fetching testimonial: ${
           error.response?.data?.message || error.message
@@ -98,10 +91,6 @@ function Home() {
         // console.log("The Fetched Slider are:", response.data);
       }
     } catch (error) {
-      // console.error(
-      //   "Error fetching slider:",
-      //   error.response?.data || error.message
-      // );
       toast.error(
         `Error fetching slider: ${
           error.response?.data?.message || error.message
@@ -127,10 +116,6 @@ function Home() {
         // console.log("The Fetched Accounting setting are:", response.data);
       }
     } catch (error) {
-      // console.error(
-      //   "Error fetching Account setting:",
-      //   error.response?.data || error.message
-      // );
       toast.error(
         `Error fetching account setting: ${
           error.response?.data?.message || error.message
@@ -139,10 +124,39 @@ function Home() {
     }
   };
 
-  // for slider issue
+  // section for fetch meta title , meta description and meta keywords
+  const [seoDetail, SetseoDetail] = useState([]);
 
+  useEffect(() => {
+    fetchSeodetail();
+  }, []);
+
+  const fetchSeodetail = async () => {
+    try {
+      const response = await axios.get(`${BACKEND_URL}/api/seo/get-active`);
+      if (response.status === 200) {
+        SetseoDetail(response.data.data);
+        console.log("The Fetched seo detail are:", response.data);
+      }
+    } catch (error) {
+      toast.error(
+        `Error fetching seo detail: ${
+          error.response?.data?.message || error.message
+        }`
+      );
+    }
+  };
+
+  const homeSeo = seoDetail.find((item) => item.page_name === "home");
   return (
     <>
+      {homeSeo && (
+        <Helmet>
+          <title>{homeSeo.meta_title}</title>
+          <meta name="description" content={homeSeo.meta_description} />
+          <meta name="keywords" content={homeSeo.meta_keywords} />
+        </Helmet>
+      )}
       <TopBar />
       <Navbar />
       <div className="container-fluid position-relative p-0">

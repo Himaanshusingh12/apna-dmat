@@ -1,11 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TopBar from "../Components/TopBar";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
+import axios from "axios";
+import { BACKEND_URL } from "../Constant";
+import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 function About() {
+  // section for fetch meta title , meta description and meta keywords
+  const [seoDetail, SetseoDetail] = useState([]);
+
+  useEffect(() => {
+    fetchSeodetail();
+  }, []);
+
+  const fetchSeodetail = async () => {
+    try {
+      const response = await axios.get(`${BACKEND_URL}/api/seo/get-active`);
+      if (response.status === 200) {
+        SetseoDetail(response.data.data);
+        console.log("The Fetched seo detail are:", response.data);
+      }
+    } catch (error) {
+      toast.error(
+        `Error fetching seo detail: ${
+          error.response?.data?.message || error.message
+        }`
+      );
+    }
+  };
+
+  const aboutSeo = seoDetail.find((item) => item.page_name === "about");
   return (
     <>
+      {aboutSeo && (
+        <Helmet>
+          <title>{aboutSeo.meta_title}</title>
+          <meta name="description" content={aboutSeo.meta_description} />
+          <meta name="keywords" content={aboutSeo.meta_keywords} />
+        </Helmet>
+      )}
       <TopBar />
       <Header pageTitle="About Us" breadcrumb1="About" />
       <div className="container-fluid p-0">
