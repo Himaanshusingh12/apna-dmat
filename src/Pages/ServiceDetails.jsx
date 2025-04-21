@@ -32,7 +32,7 @@ function ServiceDetails() {
   };
   return (
     <>
-      {servicedetail && (
+      {servicedetail?.[0] && (
         <Helmet>
           <title>{servicedetail[0].meta_title}</title>
           <meta
@@ -42,6 +42,7 @@ function ServiceDetails() {
           <meta name="keywords" content={servicedetail[0].meta_keywords} />
         </Helmet>
       )}
+
       <TopBar />
       <Header pageTitle="Service Detail" breadcrumb1="Service detail" />
       <div className="container py-5">
