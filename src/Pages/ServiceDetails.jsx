@@ -5,6 +5,7 @@ import { NavLink, useParams } from "react-router-dom";
 import TopBar from "../Components/TopBar";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
+import { Helmet } from "react-helmet";
 
 function ServiceDetails() {
   const { subservice_slug } = useParams();
@@ -22,6 +23,7 @@ function ServiceDetails() {
       );
       if (response.status === 200) {
         Setservicedetail(response.data.data);
+        // console.log("The fetched service detail is", response.data);
       }
     } catch (error) {
     } finally {
@@ -30,6 +32,16 @@ function ServiceDetails() {
   };
   return (
     <>
+      {servicedetail && (
+        <Helmet>
+          <title>{servicedetail[0].meta_title}</title>
+          <meta
+            name="description"
+            content={servicedetail[0].meta_description}
+          />
+          <meta name="keywords" content={servicedetail[0].meta_keywords} />
+        </Helmet>
+      )}
       <TopBar />
       <Header pageTitle="Service Detail" breadcrumb1="Service detail" />
       <div className="container py-5">

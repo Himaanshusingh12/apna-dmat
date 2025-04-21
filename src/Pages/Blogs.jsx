@@ -45,7 +45,7 @@ function Blogs() {
       const response = await axios.get(`${BACKEND_URL}/api/seo/get-active`);
       if (response.status === 200) {
         SetseoDetail(response.data.data);
-        console.log("The Fetched seo detail are:", response.data);
+        // console.log("The Fetched seo detail are:", response.data);
       }
     } catch (error) {
       toast.error(

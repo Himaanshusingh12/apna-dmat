@@ -6,14 +6,17 @@ import { BACKEND_URL } from "../Constant";
 import TopBar from "../Components/TopBar";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
+import { Helmet } from "react-helmet";
 
 function SubService() {
   const { slug } = useParams();
   const [subservices, setSubservices] = useState([]);
+  const [seoData, setSeoData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchSubServices();
+    fetchServiceSeo();
   }, [slug]);
 
   const fetchSubServices = async () => {
@@ -32,8 +35,29 @@ function SubService() {
     }
   };
 
+  const fetchServiceSeo = async () => {
+    try {
+      const response = await axios.get(
+        `${BACKEND_URL}/api/subservice/seo/${slug}`
+      );
+      if (response.status === 200) {
+        setSeoData(response.data.data);
+        // console.log("The fetched seo details are:", response.data);
+      }
+    } catch (error) {
+      console.error("Error fetching SEO data", error);
+    }
+  };
+
   return (
     <>
+      {seoData && (
+        <Helmet>
+          <title>{seoData.meta_title}</title>
+          <meta name="description" content={seoData.meta_description} />
+          <meta name="keywords" content={seoData.meta_keywords} />
+        </Helmet>
+      )}
       <TopBar />
       <Header pageTitle="Services" breadcrumb1="Sub Services" />
       <div className="container-fluid wow fadeInUp" data-wow-delay="0.1s">
