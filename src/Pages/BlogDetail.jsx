@@ -122,13 +122,13 @@ function BlogDetail() {
               <div className="card shadow-sm p-3">
                 <h5 className="mb-3">Categories</h5>
                 <ul className="list-unstyled">
-                  {categories.map((cat) => (
-                    <li key={cat.blog_id}>
+                  {categories.map((item) => (
+                    <li key={item.blog_id}>
                       <a
-                        href={`/blog/${cat.slug}`}
+                        href={`/blog/${item.slug}`}
                         className="text-decoration-none text-dark"
                       >
-                        {cat.category}
+                        {item.category}
                       </a>
                     </li>
                   ))}
