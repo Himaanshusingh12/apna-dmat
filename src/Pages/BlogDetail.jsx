@@ -125,7 +125,7 @@ function BlogDetail() {
                   {categories.map((item) => (
                     <li key={item.blog_id}>
                       <Link
-                        href={`/blog/${item.slug}`}
+                        to={`/blog/${item.slug}`}
                         className="text-decoration-none text-dark"
                       >
                         {item.category}
