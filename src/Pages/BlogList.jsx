@@ -5,14 +5,17 @@ import { BACKEND_URL } from "../Constant";
 import TopBar from "../Components/TopBar";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
+import { Helmet } from "react-helmet";
 
 function BlogList() {
   const { slug } = useParams();
   const [list, setList] = useState([]);
+  const [seoData, setSeoData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchBloglist();
+    fetchCategorySeo();
   }, [slug]);
 
   const fetchBloglist = async () => {
@@ -31,6 +34,20 @@ function BlogList() {
       setLoading(false);
     }
   };
+
+  const fetchCategorySeo = async () => {
+    try {
+      const response = await axios.get(
+        `${BACKEND_URL}/api/blog-category/seo/${slug}`
+      );
+      if (response.status === 200) {
+        setSeoData(response.data.data);
+        console.log("The fetched seo details are:", response.data);
+      }
+    } catch (error) {
+      console.error("Error fetching SEO data", error);
+    }
+  };
   // console.log("slug", slug);
   const stripHtml = (html) => {
     const div = document.createElement("div");
@@ -39,6 +56,13 @@ function BlogList() {
   };
   return (
     <>
+      {seoData && (
+        <Helmet>
+          <title>{seoData.meta_title}</title>
+          <meta name="description" content={seoData.meta_description} />
+          <meta name="keywords" content={seoData.meta_keywords} />
+        </Helmet>
+      )}
       <TopBar />
       <Header pageTitle="Blogs" breadcrumb1="Blog List" />
       <div className="container mt-4">
