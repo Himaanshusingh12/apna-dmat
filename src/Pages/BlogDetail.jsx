@@ -97,23 +97,6 @@ function BlogDetail() {
                   style={{ maxHeight: "400px", objectFit: "cover" }}
                 />
                 <div dangerouslySetInnerHTML={{ __html: detail.description }} />
-                <div className="bg-light p-3 rounded mt-4">
-                  <h5>Meta Information:</h5>
-                  <p>
-                    <strong>Meta Title:</strong> {detail.meta_title}
-                  </p>
-                  <p>
-                    <strong>Meta Description:</strong>{" "}
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: detail.meta_description,
-                      }}
-                    ></span>
-                  </p>
-                  <p>
-                    <strong>Meta Keywords:</strong> {detail.meta_keywords}
-                  </p>
-                </div>
               </div>
             </div>
 
