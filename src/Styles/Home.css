@@ -12,3 +12,18 @@
     color: #0d6efd;
     transform: scale(1.1);
   }
+  .experties-section{
+    background-color: #00f381;
+}
+
+.investing-button{
+    background-color: #00f381 !important;
+}
+
+.fix-color{
+  color: #00f381 !important;
+}
+
+.content-color{
+  color: #00f381;
+}

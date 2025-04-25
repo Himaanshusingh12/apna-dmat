@@ -112,6 +112,12 @@ function About() {
                 <h6>Personalized & Transparent</h6>
               </div>
             </div>
+            <div className="col-sm-6 col-md-3 mb-3">
+              <div className="bg-light p-4 rounded shadow-sm">
+                <i className="fas fa-phone-volume fa-2x text-primary mb-2" />
+                <h6>Expert On-Call Support</h6>
+              </div>
+            </div>
           </div>
         </div>
         {/* Core Values Section */}
@@ -201,14 +207,14 @@ function About() {
             <div className="col-md-12">
               <ul className="timeline list-unstyled">
                 <li className="mb-5 position-relative ps-4 border-start border-2 border-primary">
-                  <h6 className="fw-bold">2008 - Foundation Year</h6>
+                  <h6 className="fw-bold">2010 - Foundation Year</h6>
                   <p className="text-muted">
                     Started our journey in the stock market industry with a
                     commitment to trust and transparency.
                   </p>
                 </li>
                 <li className="mb-5 position-relative ps-4 border-start border-2 border-primary">
-                  <h6 className="fw-bold">2015 - 1000+ Clients</h6>
+                  <h6 className="fw-bold">2020 - 1000+ Clients</h6>
                   <p className="text-muted">
                     Crossed a major milestone with a loyal and growing client
                     base across India.

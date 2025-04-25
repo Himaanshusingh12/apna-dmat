@@ -7,7 +7,7 @@
     left: 0;
     bottom: 0;
     /* background: var(--primary); */
-    background: #00ff82;
+    background: #00f381;
     border-radius: 2px;
 }
 
@@ -76,7 +76,7 @@
     align-items: center;
     justify-content: center;
      /* background: var(--primary); */
-     background: #00D084;
+     background: #00f381;
     border-radius: 2px;
     transform: rotate(-45deg);
     transition: background-color 0.5s;
@@ -116,12 +116,12 @@
 
 .service-item:hover {
     /* background-color: #00ff82 !important; */
-        background-color: #00D084 !important;
+        background-color: #00f381 !important;
 
     cursor: pointer;
 }
 .item-1:hover {
-    background-color: #00D084 !important; 
+    background-color: #00f381 !important; 
     color: #fff;
 }
 
@@ -142,8 +142,9 @@
 
 /* testimonial */
 .testimonial-bg{
-    background-color: #00D084;
+    background-color: #00f381;
 }
+
 
   
 

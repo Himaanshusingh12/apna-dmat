@@ -118,32 +118,6 @@ function Header({ pageTitle, breadcrumb1 }) {
               </div>
 
               {/* blog section */}
-              {/* <div className="nav-item dropdown">
-                <a
-                  href="#"
-                  className="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                >
-                  Blogs
-                </a>
-                <div className="dropdown-menu m-0">
-                  {blog.length > 0 ? (
-                    blog.map((blog, index) => (
-                      <NavLink
-                        key={blog.id}
-                        to={`/blog/${blog.slug}`}
-                        className="dropdown-item"
-                      >
-                        {blog.category}
-                      </NavLink>
-                    ))
-                  ) : (
-                    <span className="dropdown-item text-muted">
-                      No Blog available
-                    </span>
-                  )}
-                </div>
-              </div> */}
               <NavLink to="/blogs" className="nav-item nav-link">
                 Blogs
               </NavLink>
@@ -151,12 +125,12 @@ function Header({ pageTitle, breadcrumb1 }) {
                 Contact Us
               </NavLink>
             </div>
-            <a
-              href="#"
-              className="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0"
+            <Link
+              to="https://a.aonelink.in/ANGOne/e7AiGTL"
+              className="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0 openbutton"
             >
               Open Dmat Account
-            </a>
+            </Link>
           </div>
         </nav>
         {/* Header Start */}

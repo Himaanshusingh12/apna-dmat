@@ -167,7 +167,7 @@ function Home() {
           nav
           items={1}
           autoplay
-          autoplayTimeout={3000}
+          autoplayTimeout={5000}
           smartSpeed={1000}
         >
           {/* Slide 1 */}
@@ -181,67 +181,20 @@ function Home() {
               <div className="carousel-caption">
                 <div className="container">
                   <div className="row g-5">
-                    {/* <div className="col-12 animated fadeInLeft"> */}
                     <div className="col-12 owl-animated owl-fadeInLeft">
                       <div className="text-center">
                         <h4 className="text-primary text-uppercase fw-bold mb-4">
-                          Welcome To Apna Dmat
+                          Welcome To Apna Demat
                         </h4>
                         <h2 className="display-4 text-uppercase text-white mb-4">
-                          Maximize Your Wealth Through Smart Investments
+                          Full Power Broking,
+                          <span className="content-color"> Half the Cost</span>
                         </h2>
                         <p className="mb-5 fs-5">
-                          Join thousands of investors who are leveraging the
-                          power of the stock market to grow their wealth. With
-                          expert insights, real-time data, and personalized
-                          strategies, we help you make informed investment
-                          decisions.
+                          Why pay more when you can get full-service broking —
+                          expert guidance, trading tools, and customer support —
+                          at a price made for friends and family?
                         </p>
-                        <div className="d-flex justify-content-center flex-shrink-0 mb-4">
-                          <a
-                            className="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2"
-                            href="#"
-                          >
-                            Learn More About Our Services
-                          </a>
-                        </div>
-                        <div className="d-flex align-items-center justify-content-center">
-                          <h2 className="text-white me-2">Follow Us:</h2>
-                          <div className="d-flex justify-content-end ms-2">
-                            <a
-                              className="btn btn-md-square btn-light rounded-circle me-2"
-                              href={accountsetting?.[0]?.facebook || "#"}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <i className="fab fa-facebook-f" />
-                            </a>
-                            <a
-                              className="btn btn-md-square btn-light rounded-circle mx-2"
-                              href={accountsetting?.[0]?.twitter || "#"}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <i className="fab fa-twitter" />
-                            </a>
-                            <a
-                              className="btn btn-md-square btn-light rounded-circle mx-2"
-                              href={accountsetting?.[0]?.instagram || "#"}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <i className="fab fa-instagram" />
-                            </a>
-                            <a
-                              className="btn btn-md-square btn-light rounded-circle ms-2"
-                              href={accountsetting?.[0]?.linkedin || "#"}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <i className="fab fa-linkedin-in" />
-                            </a>
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -263,65 +216,76 @@ function Home() {
                   <div className="row g-5">
                     <div className="col-12 animated fadeInUp">
                       <div className="text-center">
-                        <h4 className="text-primary text-uppercase fw-bold mb-4">
-                          Welcome To Apna Dmat
-                        </h4>
                         <h1 className="display-4 text-uppercase text-white mb-4">
-                          Invest your money with higher return
+                          We Don’t Just Recommend.
+                          <span className="content-color"> We Understand.</span>
                         </h1>
                         <p className="mb-5 fs-5">
-                          With over 16 years of experience in the stock market,
-                          we take care of 3500+ clients and manage over ₹30
-                          Crores in Assets Under Management (AUM). As an
-                          authorized partner of Angel One for the last 7 years,
-                          we are committed to providing you with expert guidance
-                          and support.
+                          As an investor, you deserve a plan made just for you.
+                          We profile your investment style and offer mutual fund
+                          advice that’s personalized, practical, and focused on
+                          growth.
                         </p>
-                        <div className="d-flex justify-content-center flex-shrink-0 mb-4">
-                          <a
-                            className="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2"
-                            href="#"
-                          >
-                            Learn More
-                          </a>
-                        </div>
-                        <div className="d-flex align-items-center justify-content-center">
-                          <h2 className="text-white me-2">Follow Us:</h2>
-                          <div className="d-flex justify-content-end ms-2">
-                            <a
-                              className="btn btn-md-square btn-light rounded-circle me-2"
-                              href={accountsetting?.[0]?.facebook || "#"}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <i className="fab fa-facebook-f" />
-                            </a>
-                            <a
-                              className="btn btn-md-square btn-light rounded-circle mx-2"
-                              href={accountsetting?.[0]?.twitter || "#"}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <i className="fab fa-twitter" />
-                            </a>
-                            <a
-                              className="btn btn-md-square btn-light rounded-circle mx-2"
-                              href={accountsetting?.[0]?.instagram || "#"}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <i className="fab fa-instagram" />
-                            </a>
-                            <a
-                              className="btn btn-md-square btn-light rounded-circle ms-2"
-                              href={accountsetting?.[0]?.linkedin || "#"}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <i className="fab fa-linkedin-in" />
-                            </a>
-                          </div>
-                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {/* third slider */}
+          {slider.map((slider, index) => (
+            <div key={`image2-${index}`} className="header-carousel-item">
+              <img
+                src={slider.image3}
+                className="img-fluid w-100"
+                alt={`Slide ${index + 1}`}
+              />
+              <div className="carousel-caption">
+                <div className="container">
+                  <div className="row g-5">
+                    <div className="col-12 animated fadeInUp">
+                      <div className="text-center">
+                        <h1 className="display-4 text-uppercase text-white mb-4">
+                          Right Cover,
+                          <span className="content-color"> No Guesswork</span>
+                        </h1>
+                        <p className="mb-5 fs-5">
+                          Right cover, right time, right price. We recommend
+                          insurance that fits your profile — so you’re prepared
+                          for tomorrow without overpaying today.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {/*fourth slider */}
+          {slider.map((slider, index) => (
+            <div key={`image2-${index}`} className="header-carousel-item">
+              <img
+                src={slider.image4}
+                className="img-fluid w-100"
+                alt={`Slide ${index + 1}`}
+              />
+              <div className="carousel-caption">
+                <div className="container">
+                  <div className="row g-5">
+                    <div className="col-12 animated fadeInUp">
+                      <div className="text-center">
+                        <h1 className="display-4 text-uppercase text-white mb-4">
+                          Fixed Returns.
+                          <span className="content-color">Zero Surprises.</span>
+                        </h1>
+                        <p className="mb-5 fs-5">
+                          Not all savings need to swing with the market. With
+                          handpicked FD options, you earn steady returns while
+                          keeping your capital safe and sound.
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -339,7 +303,7 @@ function Home() {
             className="section-title text-center position-relative pb-3 mb-5 mx-auto"
             style={{ maxWidth: 600 }}
           >
-            <h5 className="fw-bold text-primary text-uppercase">
+            <h5 className="fw-bold text-primary text-uppercase fix-color">
               Our Services
             </h5>
           </div>
@@ -381,7 +345,7 @@ function Home() {
             {/* Left Side - Text Content */}
             <div className="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
               <div>
-                <h4 className="text-primary fw-bold mb-3 text-uppercase">
+                <h4 className="text-primary fw-bold mb-3 text-uppercase fix-color">
                   About Us
                 </h4>
                 <h1 className="display-5 fw-semibold mb-4">
@@ -396,7 +360,7 @@ function Home() {
                 <div className="row g-4">
                   <div className="col-md-6">
                     <div className="d-flex align-items-start">
-                      <i className="fas fa-chart-line fa-2x text-primary me-3" />
+                      <i className="fas fa-chart-line fa-2x text-primary me-3 fix-color" />
                       <div>
                         <h5 className="mb-2">Expert Guidance</h5>
                         <p className="mb-0 text-muted">
@@ -408,7 +372,7 @@ function Home() {
                   </div>
                   <div className="col-md-6">
                     <div className="d-flex align-items-start">
-                      <i className="fas fa-user-clock fa-2x text-primary me-3" />
+                      <i className="fas fa-user-clock fa-2x text-primary me-3 fix-color" />
                       <div>
                         <h5 className="mb-2">16+ Years of Experience</h5>
                         <p className="mb-0 text-muted">
@@ -420,10 +384,10 @@ function Home() {
                   </div>
                   <div className="col-12 mt-4">
                     <NavLink
-                      to="/about"
-                      className="btn btn-primary btn-lg rounded-pill px-5 py-3 shadow-sm"
+                      to=""
+                      className="btn btn-primary btn-lg rounded-pill px-5 py-3 shadow-sm investing-button"
                     >
-                      Learn More About Us
+                      Start Investing
                     </NavLink>
                   </div>
                 </div>
@@ -445,7 +409,7 @@ function Home() {
       </div>
 
       {/* Additional Details Section */}
-      <div className="container-fluid py-5 bg-primary text-white mt-5">
+      <div className="container-fluid py-5 text-white mt-5 experties-section">
         <div className="container">
           <h2 className="text-center text-white mb-4 fw-bold">
             Our Expertise & Achievements
@@ -492,14 +456,15 @@ function Home() {
             </div>
             <div className="col-md-4">
               <div className="d-flex align-items-center p-3 bg-white shadow rounded text-primary">
-                <i className="fas fa-briefcase fa-2x me-3" />
+                <i className="fas fa-id-card-alt fa-2x me-3" />
                 <p className="mb-0">
-                  <strong>9 Years of Experience with Angel One</strong> - We
-                  have an extensive 9-year experience with Angel One, both as an
-                  employee and partner.
+                  <strong>IRDA Certified Insurance Advisor</strong> – We are
+                  officially certified by IRDA to offer reliable and trusted
+                  insurance services.
                 </p>
               </div>
             </div>
+
             <div className="col-md-4">
               <div className="d-flex align-items-center p-3 bg-white shadow rounded text-primary">
                 <i className="fas fa-certificate fa-2x me-3" />
@@ -515,7 +480,7 @@ function Home() {
       </div>
 
       {/* Testimonial Start */}
-      <div className="container-fluid testimonial py-5 mt-4">
+      {/* <div className="container-fluid testimonial py-5 mt-4">
         <div className="container pb-5">
           <div
             className="text-center mx-auto pb-5 wow fadeInUp"
@@ -525,14 +490,12 @@ function Home() {
             <h4 className="text-primary">Testimonial</h4>
             <h1 className="display-5 mb-4">Our Clients Reviews</h1>
             <p className="mb-0">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur
-              adipisci facilis cupiditate recusandae aperiam temporibus corporis
-              itaque quis facere, numquam, ad culpa deserunt sint dolorem autem
-              obcaecati, ipsam mollitia hic.
+              Hear directly from our investors who’ve experienced the difference
+              — smarter strategies, personalized guidance, and transparent
+              service that truly empowers their financial journey.
             </p>
           </div>
 
-          {/* Ensure OwlCarousel re-renders when data updates */}
           <OwlCarousel
             className="owl-theme"
             {...options}
@@ -548,6 +511,61 @@ function Home() {
                   <div className="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
                     <h4 className="mb-3">{item.name}-</h4>
                     <p className="m-0">{item.review}</p>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p>Loading testimonials...</p>
+            )}
+          </OwlCarousel>
+        </div>
+      </div> */}
+      {/* new one */}
+      <div className="container-fluid testimonial py-5 mt-4 bg-light">
+        <div className="container pb-5">
+          <div
+            className="text-center mx-auto pb-5 wow fadeInUp"
+            data-wow-delay="0.2s"
+            style={{ maxWidth: 800 }}
+          >
+            <h4 className="text-success fw-bold">Testimonial</h4>
+            <h1 className="display-5 fw-semibold mb-4">What Our Clients Say</h1>
+            <p className="mb-0 text-muted">
+              Real stories from real investors — discover how our guidance is
+              helping people build smarter financial futures.
+            </p>
+          </div>
+
+          <OwlCarousel
+            className="owl-theme"
+            items={3}
+            margin={20}
+            loop
+            autoplay
+            smartSpeed={1000}
+            dots={true}
+            nav={false}
+            responsive={{
+              0: { items: 1 },
+              576: { items: 1 },
+              768: { items: 2 },
+              992: { items: 3 },
+            }}
+            key={testimonial.length}
+          >
+            {testimonial.length > 0 ? (
+              testimonial.map((item) => (
+                <div
+                  key={item.testimonial_id}
+                  className="wow zoomIn px-3"
+                  data-wow-delay="0.4s"
+                >
+                  <div
+                    className="card border-0 shadow-sm rounded-4 p-4 h-100 text-center bg-white"
+                    style={{ height: "300px", overflowY: "auto" }}
+                  >
+                    <h5 className="fw-bold text-primary mb-3">{item.name}</h5>
+                    <p className="text-dark fst-italic">"{item.review}"</p>
                   </div>
                 </div>
               ))

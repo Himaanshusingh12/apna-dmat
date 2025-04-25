@@ -14,7 +14,7 @@ function PopUp() {
         document.getElementById("popupModal")
       );
       modal.show();
-    }, 5000);
+    }, 30000);
 
     return () => clearTimeout(timer);
   }, []);

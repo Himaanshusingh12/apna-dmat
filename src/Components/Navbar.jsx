@@ -126,12 +126,12 @@ function Navbar() {
                 Contact Us
               </NavLink>
             </div>
-            <a
-              href="#"
-              className="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0"
+            <Link
+              to="https://a.aonelink.in/ANGOne/e7AiGTL"
+              className="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0 openbutton"
             >
               Open Dmat Account
-            </a>
+            </Link>
           </div>
         </nav>
       </div>

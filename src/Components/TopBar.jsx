@@ -35,20 +35,20 @@ function TopBar() {
   return (
     <>
       {/* Topbar Start */}
-      <div className="container-fluid topbar bg-success px-5 d-none d-lg-block">
+      <div className="container-fluid topbar px-5 d-none d-lg-block bgcolor">
         <div className="row gx-0 align-items-center">
           <div className="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
             <div className="d-flex flex-wrap">
               <a
                 href={`tel:${accountsetting?.[0]?.mobile_number}`}
-                className="text-white small me-4"
+                className="text-white me-4"
               >
                 <i className="fas fa-phone-alt text-white me-2"></i>
                 {accountsetting?.[0]?.mobile_number || "No number available"}
               </a>
               <a
                 href={`mailto:${accountsetting?.[0]?.email_one}`}
-                className="text-white small me-0"
+                className="text-white  me-0"
               >
                 <i className="fas fa-envelope text-white me-2" />
                 {accountsetting?.[0]?.email_one || "No email available"}

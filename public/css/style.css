@@ -68,6 +68,7 @@
 
 .btn.btn-primary {
     color: var(--bs-white);
+    background-color: #00f381;
     border: none;
 }
 
@@ -116,6 +117,10 @@
     height: 45px;
 }
 
+.bgcolor{
+    background-color: #00f381;
+}
+
 /*** Topbar End ***/
 
 
@@ -148,7 +153,7 @@
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .nav-item .nav-link:hover,
 .navbar-light .navbar-nav .nav-item .nav-link.active  {
-    color: var(--bs-primary);
+    color: #00f381;
 }
 
 /* navbar logo image */
@@ -178,7 +183,8 @@
 }
 
 .dropdown .dropdown-menu a:hover {
-    background: var(--bs-primary);
+    /* background: var(--bs-primary); */
+    background: #00f381;
     color: var(--bs-white);
 }
 
@@ -294,7 +300,7 @@
 
 .header-carousel .header-carousel-item,
 .header-carousel .header-carousel-item img {
-        height: 700px;
+        height: 600px;
 }
 
 
