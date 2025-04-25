@@ -398,9 +398,10 @@ function Home() {
             <div className="col-xl-5 wow fadeInRight" data-wow-delay="0.2s">
               <div className="position-relative rounded overflow-hidden shadow-lg">
                 <img
-                  src="img/about6.jpg"
+                  src="img/about2.jpg"
                   className="img-fluid rounded-top w-100"
                   alt="About Us"
+                  style={{ height: "500px" }}
                 />
               </div>
             </div>
@@ -480,47 +481,6 @@ function Home() {
       </div>
 
       {/* Testimonial Start */}
-      {/* <div className="container-fluid testimonial py-5 mt-4">
-        <div className="container pb-5">
-          <div
-            className="text-center mx-auto pb-5 wow fadeInUp"
-            data-wow-delay="0.2s"
-            style={{ maxWidth: 800 }}
-          >
-            <h4 className="text-primary">Testimonial</h4>
-            <h1 className="display-5 mb-4">Our Clients Reviews</h1>
-            <p className="mb-0">
-              Hear directly from our investors who’ve experienced the difference
-              — smarter strategies, personalized guidance, and transparent
-              service that truly empowers their financial journey.
-            </p>
-          </div>
-
-          <OwlCarousel
-            className="owl-theme"
-            {...options}
-            key={testimonial.length}
-          >
-            {testimonial.length > 0 ? (
-              testimonial.map((item) => (
-                <div
-                  key={item.testimonial_id}
-                  className="wow zoomIn"
-                  data-wow-delay="0.6s"
-                >
-                  <div className="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                    <h4 className="mb-3">{item.name}-</h4>
-                    <p className="m-0">{item.review}</p>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p>Loading testimonials...</p>
-            )}
-          </OwlCarousel>
-        </div>
-      </div> */}
-      {/* new one */}
       <div className="container-fluid testimonial py-5 mt-4 bg-light">
         <div className="container pb-5">
           <div

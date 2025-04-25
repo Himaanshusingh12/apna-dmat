@@ -67,7 +67,7 @@ function About() {
             </div>
             <div className="col-lg-6 mb-4">
               <img
-                src="img/about6.jpg"
+                src="img/about1.jpg"
                 className="img-fluid rounded shadow"
                 alt="About Image"
               />
