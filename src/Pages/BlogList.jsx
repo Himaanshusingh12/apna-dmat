@@ -42,7 +42,7 @@ function BlogList() {
       );
       if (response.status === 200) {
         setSeoData(response.data.data);
-        console.log("The fetched seo details are:", response.data);
+        // console.log("The fetched seo details are:", response.data);
       }
     } catch (error) {
       console.error("Error fetching SEO data", error);

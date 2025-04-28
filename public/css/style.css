@@ -21,6 +21,7 @@
     bottom: 30px;
     transition: 0.5s;
     z-index: 99;
+    background-color: #00f381 !important;
 }
 
 /*** Button Start ***/
@@ -936,5 +937,4 @@
     background: var(--bs-dark);
 }
 /*** copyright end ***/
-
 

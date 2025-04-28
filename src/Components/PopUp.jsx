@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import "../Styles/Navbar.css";
 import { BACKEND_URL } from "../Constant";
 import { toast } from "react-toastify";
 
@@ -176,7 +177,10 @@ function PopUp() {
                   </div>
                 </div>
 
-                <button type="submit" className="btn btn-primary w-100">
+                <button
+                  type="submit"
+                  className="btn btn-primary w-100 popup-button"
+                >
                   Submit
                 </button>
               </form>

@@ -70,11 +70,16 @@ function ServiceDetails() {
               <div className="col-md-6">
                 <h2 className="text-primary fw-bold mb-3">Service Overview</h2>
                 <p className="lead text-muted">{service.sort_description}</p>
-                {/* Contact Us Button */}
-                <div className="text-center mt-4">
-                  <NavLink to="/contact" className="btn btn-primary py-2 px-4">
-                    Contact Us
-                  </NavLink>
+
+                <div className="mt-4 text-start chat-button">
+                  <a
+                    href="https://chat.whatsapp.com/LcuZGSxH3Tj5WQefAWkqTy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary py-2 px-4"
+                  >
+                    Let's Chat
+                  </a>
                 </div>
               </div>
 

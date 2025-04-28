@@ -136,7 +136,7 @@ function Home() {
       const response = await axios.get(`${BACKEND_URL}/api/seo/get-active`);
       if (response.status === 200) {
         SetseoDetail(response.data.data);
-        console.log("The Fetched seo detail are:", response.data);
+        // console.log("The Fetched seo detail are:", response.data);
       }
     } catch (error) {
       toast.error(
@@ -488,7 +488,9 @@ function Home() {
             data-wow-delay="0.2s"
             style={{ maxWidth: 800 }}
           >
-            <h4 className="text-success fw-bold">Testimonial</h4>
+            <h4 className="text-success fw-bold testimonial-heading">
+              Testimonial
+            </h4>
             <h1 className="display-5 fw-semibold mb-4">What Our Clients Say</h1>
             <p className="mb-0 text-muted">
               Real stories from real investors — discover how our guidance is
