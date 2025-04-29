@@ -52,7 +52,7 @@ function ServiceDetails() {
           servicedetail.map((service) => (
             <div
               key={service.id}
-              className="row g-5 align-items-center bg-white shadow rounded p-4 mb-5"
+              className="row align-items-center bg-white shadow rounded p-4 mb-5"
             >
               <div className="col-md-6 text-center">
                 <img

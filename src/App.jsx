@@ -20,6 +20,7 @@ import LumpsumCalculator from "./Pages/LumpsumCalculator";
 import TermplanCalculator from "./Pages/TermplanCalculator";
 import AccountSettingLoader from "./Components/AccountSettinLoader";
 import Blogs from "./Pages/Blogs";
+import ScrollToTop from "./Components/ScrollToTop";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <ToastContainer></ToastContainer>
         <AccountSettingLoader />
         <PopUp />
+        <ScrollToTop />
         <Routes>
           <Route
             path="/"
