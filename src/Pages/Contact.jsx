@@ -170,19 +170,24 @@ function Contact() {
                     <i className="fa fa-phone-alt fa-2x" />
                   </div>
                   <h5>Mobile</h5>
-                  <p className="mb-0">
+                  <a
+                    href={`tel:${accountsetting?.[0]?.mobile_number}`}
+                    className="text-secondary"
+                  >
                     {accountsetting?.[0]?.mobile_number ||
                       "No number available"}
-                  </p>
+                  </a>
                 </div>
 
-                {/* Website */}
+                {/* Landline */}
                 <div className="col-md-6 col-lg-3 d-flex flex-column align-items-center">
                   <div className="text-primary mb-2">
                     <i className="fas fa-phone-square-alt fa-2x" />
                   </div>
                   <h5>LandLine</h5>
-                  <p className="mb-0">079 49189316</p>
+                  <a href="tel:07949189316" className="mb-0 text-secondary">
+                    079 49189316
+                  </a>
                 </div>
               </div>
             </div>

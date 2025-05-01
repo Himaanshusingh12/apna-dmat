@@ -316,7 +316,6 @@ function Home() {
                   key={service.id}
                 >
                   <NavLink
-                    // to={`/sub-service/${service.service_id}`}
                     to={`/service/${service.slug}`}
                     className="text-decoration-none"
                     style={{ color: "inherit" }}
@@ -383,12 +382,14 @@ function Home() {
                     </div>
                   </div>
                   <div className="col-12 mt-4">
-                    <NavLink
-                      to=""
+                    <a
+                      href="https://a.aonelink.in/ANGOne/1jU7CGK"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="btn btn-primary btn-lg rounded-pill px-5 py-3 shadow-sm investing-button"
                     >
                       Start Investing
-                    </NavLink>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -417,62 +418,71 @@ function Home() {
           </h2>
           <div className="row g-4">
             <div className="col-md-4">
-              <div className="d-flex align-items-center p-3 bg-white shadow rounded text-primary">
-                <i className="fas fa-users fa-2x me-3" />
-                <p className="mb-0">
-                  <strong>3500+ Clients</strong> - We take care of over 3500
-                  clients across different sectors.
+              <div className="text-center p-4 bg-white shadow rounded text-primary h-100">
+                <i className="fas fa-users fa-3x mb-3" />
+                <p className="mb-0 text-primary">
+                  <strong>3500+ Clients</strong>
+                  <br />
+                  We take care of over 3500 clients across different sectors.
+                </p>
+              </div>
+            </div>
+
+            <div className="col-md-4">
+              <div className="text-center p-4 bg-white shadow rounded text-primary h-100">
+                <i className="fas fa-chart-line fa-3x mb-3" />
+                <p className="mb-0 text-primary">
+                  <strong>30cr+ AUM</strong>
+                  <br />
+                  Our assets under management exceed 30 crores, showcasing our
+                  financial expertise.
                 </p>
               </div>
             </div>
             <div className="col-md-4">
-              <div className="d-flex align-items-center p-3 bg-white shadow rounded text-primary">
-                <i className="fas fa-chart-line fa-2x me-3" />
-                <p className="mb-0">
-                  <strong>30cr+ AUM</strong> - Our assets under management
-                  exceed 30 crores, showcasing our financial expertise.
-                </p>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="d-flex align-items-center p-3 bg-white shadow rounded text-primary">
-                <i className="fas fa-cogs fa-2x me-3" />
-                <p className="mb-0">
-                  <strong>16 Years of Stock Market</strong> - Our team has been
-                  deeply involved in the stock market for over 16 years.
+              <div className="text-center p-4 bg-white shadow rounded text-primary h-100">
+                <i className="fas fa-cogs fa-3x mb-3" />
+                <p className="mb-0 text-primary">
+                  <strong>16 Years of Stock Market</strong>
+                  <br />
+                  Our team has been deeply involved in the stock market for over
+                  16 years.
                 </p>
               </div>
             </div>
           </div>
           <div className="row g-4 mt-3">
             <div className="col-md-4">
-              <div className="d-flex align-items-center p-3 bg-white shadow rounded text-primary">
-                <i className="fas fa-handshake fa-2x me-3" />
-                <p className="mb-0">
-                  <strong>7 Years as Authorized Partner of Angel One</strong> -
+              <div className="text-center p-4 bg-white shadow rounded text-primary h-100">
+                <i className="fas fa-handshake fa-3x mb-3" />
+                <p className="mb-0 text-primary">
+                  <strong>7 Years as Authorized Partner of Angel One</strong>
+                  <br />
                   We've built a strong partnership with Angel One for over 7
                   years.
                 </p>
               </div>
             </div>
             <div className="col-md-4">
-              <div className="d-flex align-items-center p-3 bg-white shadow rounded text-primary">
-                <i className="fas fa-id-card-alt fa-2x me-3" />
-                <p className="mb-0">
-                  <strong>IRDA Certified Insurance Advisor</strong> – We are
-                  officially certified by IRDA to offer reliable and trusted
-                  insurance services.
+              <div className="text-center p-4 bg-white shadow rounded text-primary h-100">
+                <i className="fas fa-id-card-alt fa-3x mb-3" />
+                <p className="mb-0 text-primary">
+                  <strong>IRDA Certified Insurance Advisor</strong>
+                  <br />
+                  We are officially certified by IRDA to offer reliable and
+                  trusted insurance services.
                 </p>
               </div>
             </div>
 
             <div className="col-md-4">
-              <div className="d-flex align-items-center p-3 bg-white shadow rounded text-primary">
-                <i className="fas fa-certificate fa-2x me-3" />
-                <p className="mb-0">
-                  <strong>AMFI Certified MF Distributor</strong> - We are
-                  certified by AMFI, ensuring our reliability as a mutual fund
-                  distributor.
+              <div className="text-center p-4 bg-white shadow rounded text-primary h-100">
+                <i className="fas fa-certificate fa-3x mb-3" />
+                <p className="mb-0 text-primary">
+                  <strong>AMFI Certified MF Distributor</strong>
+                  <br />
+                  We are certified by AMFI, ensuring our reliability as a mutual
+                  fund distributor.
                 </p>
               </div>
             </div>

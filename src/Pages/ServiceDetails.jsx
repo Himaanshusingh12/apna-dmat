@@ -52,7 +52,7 @@ function ServiceDetails() {
           servicedetail.map((service) => (
             <div
               key={service.id}
-              className="row align-items-center bg-white shadow rounded p-4 mb-5"
+              className="row align-items-center bg-white rounded p-4 mb-5"
             >
               <div className="col-md-6 text-center">
                 <img
@@ -84,7 +84,7 @@ function ServiceDetails() {
               </div>
 
               <div className="col-12 mt-4">
-                <div className="bg-light p-4 rounded shadow-sm">
+                <div className="p-4">
                   <div
                     className="mb-0"
                     style={{ lineHeight: "1.8" }}

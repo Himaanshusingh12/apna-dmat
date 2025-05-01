@@ -46,6 +46,7 @@ function TopBar() {
                 <i className="fas fa-phone-alt text-white me-2"></i>
                 {accountsetting?.[0]?.mobile_number || "No number available"}
               </a>
+
               <a
                 href={`mailto:${accountsetting?.[0]?.email_one}`}
                 className="text-white  me-0"

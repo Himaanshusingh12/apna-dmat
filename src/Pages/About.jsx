@@ -239,7 +239,7 @@ function About() {
           </div>
         </div>
         {/* Final Quote */}
-        <div className="bg-primary text-white text-center py-5 mb-2">
+        <div className="bg-primary text-white text-center py-5">
           <div className="container">
             <p className="fs-4 mb-0">
               Your trust is our greatest asset.{" "}

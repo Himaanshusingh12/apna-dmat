@@ -105,7 +105,6 @@ function Navbar() {
                     service.map((service, index) => (
                       <NavLink
                         key={service.id}
-                        // to={`/sub-service/${service.service_id}`}
                         to={`/service/${service.slug}`}
                         className="dropdown-item"
                       >

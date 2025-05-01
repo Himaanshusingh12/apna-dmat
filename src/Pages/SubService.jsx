@@ -59,14 +59,14 @@ function SubService() {
         </Helmet>
       )}
       <TopBar />
-      <Header pageTitle="Services" breadcrumb1="Sub Services" />
+      <Header pageTitle="Services" breadcrumb1="Services" />
       <div className="container-fluid wow fadeInUp" data-wow-delay="0.1s">
         <div className="container py-5">
           <div
             className="section-title text-center position-relative pb-3 mb-5 mx-auto"
             style={{ maxWidth: 600 }}
           >
-            <h5 className="fw-bold text-primary text-uppercase">Subservices</h5>
+            <h5 className="fw-bold text-primary text-uppercase">Services</h5>
           </div>
           <div className="row g-5">
             {subservices.length > 0 ? (
