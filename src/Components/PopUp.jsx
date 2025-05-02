@@ -58,8 +58,14 @@ function PopUp() {
       toast.error("Name field is required");
       return;
     }
-    if (formData.mobile_number === "") {
+
+    if (formData.mobile_number.trim() === "") {
       toast.error("Mobile number field is required");
+      return;
+    }
+
+    if (!/^\d{10}$/.test(formData.mobile_number)) {
+      toast.error("Mobile number must be exactly 10 digits");
       return;
     }
 
