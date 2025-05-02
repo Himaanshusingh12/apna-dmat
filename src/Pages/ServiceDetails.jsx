@@ -6,6 +6,7 @@ import TopBar from "../Components/TopBar";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import { Helmet } from "react-helmet";
+import Prefooter from "../Components/Prefooter";
 
 function ServiceDetails() {
   const { subservice_slug } = useParams();
@@ -44,7 +45,9 @@ function ServiceDetails() {
       )}
 
       <TopBar />
-      <Header pageTitle="Service Detail" breadcrumb1="Service detail" />
+      {/* <Header pageTitle="Service Detail" breadcrumb1="Service detail" /> */}
+      <Header pageTitle={servicedetail?.[0]?.title || "Service Detail"} />
+
       <div className="container py-5">
         {loading ? (
           <p className="text-center">Loading...</p>
@@ -52,7 +55,7 @@ function ServiceDetails() {
           servicedetail.map((service) => (
             <div
               key={service.id}
-              className="row align-items-center bg-white rounded p-4 mb-5"
+              className="row align-items-center bg-white rounded p-4"
             >
               <div className="col-md-6 text-center">
                 <img
@@ -98,6 +101,7 @@ function ServiceDetails() {
           <p className="text-center">No services available</p>
         )}
       </div>
+      <Prefooter />
       <Footer />
     </>
   );

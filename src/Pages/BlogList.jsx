@@ -64,7 +64,8 @@ function BlogList() {
         </Helmet>
       )}
       <TopBar />
-      <Header pageTitle="Blogs" breadcrumb1="Blog List" />
+      {/* <Header pageTitle="Blogs" breadcrumb1="Blog List" /> */}
+      <Header pageTitle="Blogs" />
       <div className="container mt-4">
         <h2 className="mb-4 text-center">Latest Blogs</h2>
         {loading ? (
@@ -74,6 +75,10 @@ function BlogList() {
             {list.map((blog) => (
               <div key={blog.blogdetail_id} className="col-md-4 mb-4">
                 <div className="card shadow-sm">
+                  <Link
+                    to={`/blog/${slug}/${blog.slug}`}
+                    className="stretched-link"
+                  />
                   <img
                     src={blog.image}
                     className="card-img-top"
@@ -104,6 +109,7 @@ function BlogList() {
           <p className="text-center">No blogs available.</p>
         )}
       </div>
+
       <Footer />
     </>
   );

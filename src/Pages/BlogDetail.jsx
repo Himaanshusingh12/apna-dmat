@@ -79,7 +79,8 @@ function BlogDetail() {
         </Helmet>
       )}
       <TopBar />
-      <Header pageTitle="Blog Detail" breadcrumb1="Blog Detail" />
+      {/* <Header pageTitle="Blog Detail" breadcrumb1="Blog Detail" /> */}
+      <Header pageTitle={detail?.[0]?.title || "Blog Detail"} />
 
       <div className="container mt-5">
         {loading ? (

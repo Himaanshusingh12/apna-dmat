@@ -6,7 +6,6 @@ import { BACKEND_URL } from "../Constant";
 import { toast } from "react-toastify";
 
 function Header({ pageTitle, breadcrumb1 }) {
-  // section for fetch logo
   const [accountsetting, Setaccountsetting] = useState([]);
 
   useEffect(() => {
@@ -63,6 +62,14 @@ function Header({ pageTitle, breadcrumb1 }) {
       );
     }
   };
+
+  // Breadcrumb logic
+  const pathnames = location.pathname.split("/").filter((x) => x);
+  const formattedPath = pathnames.length
+    ? pathnames[pathnames.length - 1]
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase())
+    : "Home";
 
   return (
     <>
@@ -134,7 +141,7 @@ function Header({ pageTitle, breadcrumb1 }) {
           </div>
         </nav>
         {/* Header Start */}
-        <div className="container-fluid bg-breadcrumb">
+        {/* <div className="container-fluid bg-breadcrumb">
           <div className="container text-center py-5" style={{ maxWidth: 900 }}>
             <h4
               className="text-white display-4 mb-4 wow fadeInDown"
@@ -152,6 +159,48 @@ function Header({ pageTitle, breadcrumb1 }) {
               <li className="breadcrumb-item active text-primary">
                 {breadcrumb1}
               </li>
+            </ol>
+          </div>
+        </div> */}
+        {/* from here */}
+        <div className="container-fluid bg-breadcrumb">
+          <div className="container text-center py-5" style={{ maxWidth: 900 }}>
+            <h4
+              className="text-white display-4 mb-4 wow fadeInDown"
+              data-wow-delay="0.1s"
+            >
+              {pageTitle || formattedPath}
+            </h4>
+            <ol
+              className="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown"
+              data-wow-delay="0.3s"
+            >
+              <li className="breadcrumb-item">
+                <NavLink to="/">Home</NavLink>
+              </li>
+              {breadcrumb1 ? (
+                <li className="breadcrumb-item active text-primary">
+                  {breadcrumb1}
+                </li>
+              ) : (
+                pathnames.map((value, index) => {
+                  const to = `/${pathnames.slice(0, index + 1).join("/")}`;
+                  const isLast = index === pathnames.length - 1;
+                  const formatted = value
+                    .replace(/-/g, " ")
+                    .replace(/\b\w/g, (c) => c.toUpperCase());
+                  return (
+                    <li
+                      key={index}
+                      className={`breadcrumb-item ${
+                        isLast ? "active text-primary" : ""
+                      }`}
+                    >
+                      {formatted}
+                    </li>
+                  );
+                })
+              )}
             </ol>
           </div>
         </div>

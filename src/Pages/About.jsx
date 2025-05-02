@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import TopBar from "../Components/TopBar";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
+import "../Styles/Home.css";
 import axios from "axios";
 import { BACKEND_URL } from "../Constant";
 import { toast } from "react-toastify";
@@ -48,7 +49,7 @@ function About() {
         <div className="container py-5">
           <div className="row align-items-center">
             <div className="col-lg-6">
-              <h2 className="fw-semibold mb-3">Who We Are</h2>
+              <h2 className="fw-semibold mb-3">Who We Are ?</h2>
               <p className="fs-5">
                 With over <strong>16 years</strong> in the stock market, we
                 proudly serve <strong>3500+ happy clients</strong> and manage{" "}
@@ -83,38 +84,38 @@ function About() {
           <div className="row text-center">
             <div className="col-sm-6 col-md-3 mb-3">
               <div className="bg-light p-4 rounded shadow-sm">
-                <i className="fas fa-clock fa-2x text-primary mb-2" />
+                <i className="fas fa-clock fa-3x text-primary mb-2" />
                 <h6>16+ Years Experience</h6>
               </div>
             </div>
             <div className="col-sm-6 col-md-3 mb-3">
               <div className="bg-light p-4 rounded shadow-sm">
-                <i className="fas fa-users fa-2x text-success mb-2" />
+                <i className="fas fa-users fa-3x text-success mb-2" />
                 <h6>3500+ Clients</h6>
               </div>
             </div>
             <div className="col-sm-6 col-md-3 mb-3">
               <div className="bg-light p-4 rounded shadow-sm">
-                <i className="fas fa-rupee-sign fa-2x text-warning mb-2" />
+                <i className="fas fa-rupee-sign fa-3x text-warning mb-2" />
                 <h6>₹30+ Cr AUM</h6>
               </div>
             </div>
             <div className="col-sm-6 col-md-3 mb-3">
               <div className="bg-light p-4 rounded shadow-sm">
-                <i className="fas fa-certificate fa-2x text-info mb-2" />
+                <i className="fas fa-certificate fa-3x text-info mb-2" />
                 <h6>AMFI &amp; IRDA Certified</h6>
               </div>
             </div>
 
             <div class="col-sm-6 col-md-3 mb-3">
               <div class="bg-light p-4 rounded shadow-sm">
-                <i class="fas fa-hand-holding-heart fa-2x text-danger mb-2"></i>
+                <i class="fas fa-hand-holding-heart fa-3x text-danger mb-2"></i>
                 <h6>Personalized & Transparent</h6>
               </div>
             </div>
             <div className="col-sm-6 col-md-3 mb-3">
               <div className="bg-light p-4 rounded shadow-sm">
-                <i className="fas fa-phone-volume fa-2x text-primary mb-2" />
+                <i className="fas fa-phone-volume fa-3x text-primary mb-2" />
                 <h6>Expert On-Call Support</h6>
               </div>
             </div>
@@ -130,7 +131,7 @@ function About() {
             <div className="row text-center">
               <div className="col-md-4 mb-4">
                 <div className="p-4 border rounded-3 shadow-sm h-100">
-                  <i className="fas fa-handshake fa-2x text-primary mb-3" />
+                  <i className="fas fa-handshake fa-3x text-primary mb-3" />
                   <h6 className="fw-semibold">Trust & Transparency</h6>
                   <p className="text-muted">
                     We believe in open communication and ethical guidance at
@@ -140,7 +141,7 @@ function About() {
               </div>
               <div className="col-md-4 mb-4">
                 <div className="p-4 border rounded-3 shadow-sm h-100">
-                  <i className="fas fa-users fa-2x text-success mb-3" />
+                  <i className="fas fa-users fa-3x text-success mb-3" />
                   <h6 className="fw-semibold">Client-Centric</h6>
                   <p className="text-muted">
                     We treat every client like family and tailor our services to
@@ -150,7 +151,7 @@ function About() {
               </div>
               <div className="col-md-4 mb-4">
                 <div className="p-4 border rounded-3 shadow-sm h-100">
-                  <i className="fas fa-chart-line fa-2x text-warning mb-3" />
+                  <i className="fas fa-chart-line fa-3x text-warning mb-3" />
                   <h6 className="fw-semibold">Commitment to Growth</h6>
                   <p className="text-muted">
                     Your success is our ultimate goal, and we grow only when you
@@ -200,44 +201,65 @@ function About() {
         {/* Timeline / Company Journey Section */}
         <div className="container py-5">
           <div className="text-center mb-5">
-            <h3 className="fw-bold">Our Journey</h3>
+            <h2 className="fw-bold">Our Journey</h2>
             <p className="text-muted">Milestones that define our legacy</p>
           </div>
-          <div className="row">
-            <div className="col-md-12">
-              <ul className="timeline list-unstyled">
-                <li className="mb-5 position-relative ps-4 border-start border-2 border-primary">
-                  <h6 className="fw-bold">2010 - Foundation Year</h6>
-                  <p className="text-muted">
-                    Started our journey in the stock market industry with a
-                    commitment to trust and transparency.
-                  </p>
-                </li>
-                <li className="mb-5 position-relative ps-4 border-start border-2 border-primary">
-                  <h6 className="fw-bold">2020 - 1000+ Clients</h6>
-                  <p className="text-muted">
-                    Crossed a major milestone with a loyal and growing client
-                    base across India.
-                  </p>
-                </li>
-                <li className="mb-5 position-relative ps-4 border-start border-2 border-primary">
-                  <h6 className="fw-bold">2022 - ₹30+ Cr AUM</h6>
-                  <p className="text-muted">
-                    Achieved ₹30+ crores in Assets Under Management, reflecting
-                    strong client trust.
-                  </p>
-                </li>
-                <li className="mb-3 position-relative ps-4 border-start border-2 border-primary">
-                  <h6 className="fw-bold">Present - Certified & Growing</h6>
-                  <p className="text-muted">
-                    Certified by AMFI & IRDA, we now serve 3500+ clients with
-                    complete investment and insurance solutions.
-                  </p>
-                </li>
-              </ul>
+          <div className="timeline">
+            {/* Left */}
+            <div className="timeline-item left">
+              <div className="timeline-icon bg-primary">
+                <i className="fas fa-rocket" />
+              </div>
+              <div className="content">
+                <h6 className="fw-bold">2010 - Foundation Year</h6>
+                <p className="text-muted">
+                  Started our journey in the stock market industry with a
+                  commitment to trust and transparency.
+                </p>
+              </div>
+            </div>
+            {/* Right */}
+            <div className="timeline-item right">
+              <div className="timeline-icon bg-danger">
+                <i className="fas fa-users" />
+              </div>
+              <div className="content">
+                <h6 className="fw-bold">2020 - 1000+ Clients</h6>
+                <p className="text-muted">
+                  Crossed a major milestone with a loyal and growing client base
+                  across India.
+                </p>
+              </div>
+            </div>
+            {/* Left */}
+            <div className="timeline-item left">
+              <div className="timeline-icon bg-warning">
+                <i className="fas fa-coins" />
+              </div>
+              <div className="content">
+                <h6 className="fw-bold">2022 - ₹30+ Cr AUM</h6>
+                <p className="text-muted">
+                  Achieved ₹30+ crores in Assets Under Management, reflecting
+                  strong client trust.
+                </p>
+              </div>
+            </div>
+            {/* Right */}
+            <div className="timeline-item right">
+              <div className="timeline-icon bg-primary">
+                <i className="fas fa-shield-alt" />
+              </div>
+              <div className="content">
+                <h6 className="fw-bold">Present - Certified &amp; Growing</h6>
+                <p className="text-muted">
+                  Certified by AMFI &amp; IRDA, we now serve 3500+ clients with
+                  complete investment and insurance solutions.
+                </p>
+              </div>
             </div>
           </div>
         </div>
+
         {/* Final Quote */}
         <div className="bg-primary text-white text-center py-5">
           <div className="container">
