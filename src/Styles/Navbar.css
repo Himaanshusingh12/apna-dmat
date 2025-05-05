@@ -4,4 +4,18 @@
 .popup-button{
     background-color: #00f381;
 }
- 
+
+
+/* prefooter css */
+.chats-button{
+    background-color: #00f381 !important;
+    border: none !important;
+}
+
+.together-button{
+    color: #00f381;
+}
+
+.left-border{
+    border-left: 4px solid #00f381 !important;
+}
